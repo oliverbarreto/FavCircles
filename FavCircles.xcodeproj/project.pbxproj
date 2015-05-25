@@ -15,6 +15,11 @@
 		A71A6C4C1B133BEE006CB113 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A71A6C4A1B133BEE006CB113 /* LaunchScreen.xib */; };
 		A71A6C581B133BEF006CB113 /* FavCirclesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C571B133BEF006CB113 /* FavCirclesTests.swift */; };
 		A71A6C621B135C05006CB113 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = A71A6C611B135C05006CB113 /* Images */; };
+		A71A6C6D1B136C87006CB113 /* LibraryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C6C1B136C87006CB113 /* LibraryAPI.swift */; };
+		A71A6C701B136CA4006CB113 /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C6F1B136CA4006CB113 /* PersistencyManager.swift */; };
+		A71A6C721B136CBD006CB113 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C711B136CBD006CB113 /* User.swift */; };
+		A71A6C741B136CCF006CB113 /* FavCirclesCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C731B136CCF006CB113 /* FavCirclesCellItem.swift */; };
+		A71A6C761B136CD9006CB113 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C751B136CD9006CB113 /* RoundedImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,11 @@
 		A71A6C561B133BEF006CB113 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A71A6C571B133BEF006CB113 /* FavCirclesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavCirclesTests.swift; sourceTree = "<group>"; };
 		A71A6C611B135C05006CB113 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		A71A6C6C1B136C87006CB113 /* LibraryAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryAPI.swift; sourceTree = "<group>"; };
+		A71A6C6F1B136CA4006CB113 /* PersistencyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
+		A71A6C711B136CBD006CB113 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A71A6C731B136CCF006CB113 /* FavCirclesCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavCirclesCellItem.swift; sourceTree = "<group>"; };
+		A71A6C751B136CD9006CB113 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +93,7 @@
 			children = (
 				A71A6C3E1B133BEE006CB113 /* AppDelegate.swift */,
 				A71A6C451B133BEE006CB113 /* Main.storyboard */,
+				A71A6C6E1B136C8F006CB113 /* API */,
 				A71A6C691B136017006CB113 /* Model */,
 				A71A6C6A1B13601F006CB113 /* View */,
 				A71A6C6B1B136026006CB113 /* Controller */,
@@ -122,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				A71A6C401B133BEE006CB113 /* FavCircles.xcdatamodeld */,
+				A71A6C711B136CBD006CB113 /* User.swift */,
+				A71A6C731B136CCF006CB113 /* FavCirclesCellItem.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -130,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				A71A6C4A1B133BEE006CB113 /* LaunchScreen.xib */,
+				A71A6C751B136CD9006CB113 /* RoundedImageView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -140,6 +154,15 @@
 				A71A6C431B133BEE006CB113 /* ViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		A71A6C6E1B136C8F006CB113 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A71A6C6C1B136C87006CB113 /* LibraryAPI.swift */,
+				A71A6C6F1B136CA4006CB113 /* PersistencyManager.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,8 +266,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A71A6C761B136CD9006CB113 /* RoundedImageView.swift in Sources */,
+				A71A6C701B136CA4006CB113 /* PersistencyManager.swift in Sources */,
 				A71A6C441B133BEE006CB113 /* ViewController.swift in Sources */,
+				A71A6C721B136CBD006CB113 /* User.swift in Sources */,
 				A71A6C3F1B133BEE006CB113 /* AppDelegate.swift in Sources */,
+				A71A6C741B136CCF006CB113 /* FavCirclesCellItem.swift in Sources */,
+				A71A6C6D1B136C87006CB113 /* LibraryAPI.swift in Sources */,
 				A71A6C421B133BEE006CB113 /* FavCircles.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
