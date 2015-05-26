@@ -83,8 +83,8 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         if let name = userFavContactsArray[indexPath.item].name {
             cell.cellNameLabel.text = name
         }
-        if let imageName = UIImage(named: userFavContactsArray[indexPath.item].imageName) {
-            cell.cellImageView.image = imageName
+        if let image = UIImage(named: userFavContactsArray[indexPath.item].imageName) {
+            cell.cellImageView.image = image
         }
         
         println("\(cell.frame)")
