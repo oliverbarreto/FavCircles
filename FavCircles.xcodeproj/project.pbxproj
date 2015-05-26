@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A71A6C3F1B133BEE006CB113 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C3E1B133BEE006CB113 /* AppDelegate.swift */; };
 		A71A6C421B133BEE006CB113 /* FavCircles.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C401B133BEE006CB113 /* FavCircles.xcdatamodeld */; };
-		A71A6C441B133BEE006CB113 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C431B133BEE006CB113 /* ViewController.swift */; };
 		A71A6C471B133BEE006CB113 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A71A6C451B133BEE006CB113 /* Main.storyboard */; };
 		A71A6C491B133BEE006CB113 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A71A6C481B133BEE006CB113 /* Images.xcassets */; };
 		A71A6C4C1B133BEE006CB113 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A71A6C4A1B133BEE006CB113 /* LaunchScreen.xib */; };
@@ -20,6 +19,10 @@
 		A71A6C721B136CBD006CB113 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C711B136CBD006CB113 /* User.swift */; };
 		A71A6C741B136CCF006CB113 /* FavCirclesCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C731B136CCF006CB113 /* FavCirclesCellItem.swift */; };
 		A71A6C761B136CD9006CB113 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C751B136CD9006CB113 /* RoundedImageView.swift */; };
+		A71A6C781B136D5D006CB113 /* FCGenericPageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C771B136D5D006CB113 /* FCGenericPageContentViewController.swift */; };
+		A71A6C7A1B136EFA006CB113 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C791B136EFA006CB113 /* Constants.swift */; };
+		A71A6C7C1B136F6F006CB113 /* FCPageContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C7B1B136F6F006CB113 /* FCPageContentVC.swift */; };
+		A7C0795F1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0795E1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,6 @@
 		A71A6C3D1B133BEE006CB113 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A71A6C3E1B133BEE006CB113 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A71A6C411B133BEE006CB113 /* FavCircles.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavCircles.xcdatamodel; sourceTree = "<group>"; };
-		A71A6C431B133BEE006CB113 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A71A6C461B133BEE006CB113 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A71A6C481B133BEE006CB113 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A71A6C4B1B133BEE006CB113 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -50,6 +52,10 @@
 		A71A6C711B136CBD006CB113 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A71A6C731B136CCF006CB113 /* FavCirclesCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavCirclesCellItem.swift; sourceTree = "<group>"; };
 		A71A6C751B136CD9006CB113 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		A71A6C771B136D5D006CB113 /* FCGenericPageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCGenericPageContentViewController.swift; path = Classes/Controllers/FCGenericPageContentViewController.swift; sourceTree = "<group>"; };
+		A71A6C791B136EFA006CB113 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A71A6C7B1B136F6F006CB113 /* FCPageContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCPageContentVC.swift; path = Classes/Controllers/FCPageContentVC.swift; sourceTree = "<group>"; };
+		A7C0795E1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCRegularCellCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +97,8 @@
 		A71A6C3B1B133BEE006CB113 /* FavCircles */ = {
 			isa = PBXGroup;
 			children = (
-				A71A6C3E1B133BEE006CB113 /* AppDelegate.swift */,
 				A71A6C451B133BEE006CB113 /* Main.storyboard */,
+				A71A6C3E1B133BEE006CB113 /* AppDelegate.swift */,
 				A71A6C6E1B136C8F006CB113 /* API */,
 				A71A6C691B136017006CB113 /* Model */,
 				A71A6C6A1B13601F006CB113 /* View */,
@@ -142,6 +148,7 @@
 		A71A6C6A1B13601F006CB113 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A7C0795E1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift */,
 				A71A6C4A1B133BEE006CB113 /* LaunchScreen.xib */,
 				A71A6C751B136CD9006CB113 /* RoundedImageView.swift */,
 			);
@@ -151,7 +158,8 @@
 		A71A6C6B1B136026006CB113 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A71A6C431B133BEE006CB113 /* ViewController.swift */,
+				A71A6C771B136D5D006CB113 /* FCGenericPageContentViewController.swift */,
+				A71A6C7B1B136F6F006CB113 /* FCPageContentVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -159,6 +167,7 @@
 		A71A6C6E1B136C8F006CB113 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				A71A6C791B136EFA006CB113 /* Constants.swift */,
 				A71A6C6C1B136C87006CB113 /* LibraryAPI.swift */,
 				A71A6C6F1B136CA4006CB113 /* PersistencyManager.swift */,
 			);
@@ -266,14 +275,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A71A6C781B136D5D006CB113 /* FCGenericPageContentViewController.swift in Sources */,
+				A7C0795F1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift in Sources */,
 				A71A6C761B136CD9006CB113 /* RoundedImageView.swift in Sources */,
 				A71A6C701B136CA4006CB113 /* PersistencyManager.swift in Sources */,
-				A71A6C441B133BEE006CB113 /* ViewController.swift in Sources */,
 				A71A6C721B136CBD006CB113 /* User.swift in Sources */,
 				A71A6C3F1B133BEE006CB113 /* AppDelegate.swift in Sources */,
 				A71A6C741B136CCF006CB113 /* FavCirclesCellItem.swift in Sources */,
 				A71A6C6D1B136C87006CB113 /* LibraryAPI.swift in Sources */,
 				A71A6C421B133BEE006CB113 /* FavCircles.xcdatamodeld in Sources */,
+				A71A6C7C1B136F6F006CB113 /* FCPageContentVC.swift in Sources */,
+				A71A6C7A1B136EFA006CB113 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
