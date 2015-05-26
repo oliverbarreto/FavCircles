@@ -16,9 +16,9 @@ class RoundedImageView: UIView {
     var imageLayer: CALayer!
     
     @IBInspectable var image: UIImage?
-    @IBInspectable var imageBackgroundColor:UIColor = UIColor.grayColor()
-    @IBInspectable var imageBorderInsets: CGFloat = 1.0
-    
+    @IBInspectable var imageBackgroundColor:UIColor = UIColor.whiteColor()
+    @IBInspectable var imageBorderInsets: CGFloat = 2.0 // Even numbers
+    @IBInspectable var imageBorderWidth: CGFloat = 1.0
     
     
     // MARK: View LifeCycle MEthods
@@ -54,7 +54,7 @@ class RoundedImageView: UIView {
         
         if imageLayer == nil {
             let mask = CAShapeLayer()
-            let dx = imageBorderInsets + 1.0
+            let dx = imageBorderInsets + imageBorderWidth
             let path = UIBezierPath(ovalInRect: CGRectInset(self.bounds, dx, dx))
             mask.fillColor = UIColor.blackColor().CGColor
             mask.path = path.CGPath

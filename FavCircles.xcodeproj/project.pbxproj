@@ -148,9 +148,9 @@
 		A71A6C6A1B13601F006CB113 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A7C0795E1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift */,
 				A71A6C4A1B133BEE006CB113 /* LaunchScreen.xib */,
 				A71A6C751B136CD9006CB113 /* RoundedImageView.swift */,
+				A7C0795E1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
