@@ -139,6 +139,7 @@ class PersistencyManager: NSObject {
             UserFav(name: "Mima", lastName: "Rodríguez Pestano", type: "iPhone", favItem: "+34697414021", imageName: "Mima.jpeg", favGroup: "Family"),
             UserFav(name: "Defaul", lastName: "Default", type: "Default", favItem: "", imageName: "default.png", favGroup: "Family"),
             UserFav(name: "Colegio Pureza de María", lastName: "", type: "Work", favItem: "+34922277763", imageName: "purezamaria.jpeg", favGroup: "Colegio"),        
+            UserFav(name: "Bulbasur", lastName: "", type: "Mikemons", favItem: "", imageName: "bulbasaur.jpg", favGroup: "Mikemons"),
             UserFav(name: "Pikachu", lastName: "", type: "Mikemons", favItem: "", imageName: "025Pikachu_OS_anime_4.png", favGroup: "Mikemons")]
         
         favs = tmpDB
