@@ -30,7 +30,8 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         static let CollectionViewCellFavTypeFullRowSize: String = "FullRowSizeCell"
         
         // Config
-        static let ConfigMaxNumberOfUserFavsPerRow: CGFloat = 4
+        static let ConfigCellHightMultiplier: CGFloat = 1.3
+        static let ConfigMaxNumberOfUserFavsPerRow: CGFloat = 4 // TODO: Make Configurable by user Prefs
         static let ConfigMaxNumberOfUserFavs: Int = 15 // TODO: Create a variable to make InApp Purchases for more contacts to add
         static let ImageNameForAddItemIcon:String = "add_icon.png"
         static let DefaultProfileImage:String = "default_profile_photo.png"
@@ -99,7 +100,7 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        return CGSize(width: self.view.bounds.width/Constants.ConfigMaxNumberOfUserFavsPerRow, height: (self.view.frame.width/Constants.ConfigMaxNumberOfUserFavsPerRow)*1.2)
+        return CGSize(width: self.view.bounds.width/Constants.ConfigMaxNumberOfUserFavsPerRow, height: (self.view.frame.width/Constants.ConfigMaxNumberOfUserFavsPerRow) * Constants.ConfigCellHightMultiplier)
         
         /*
         else if modelArray[indexPath.item] == "CLEAR" {

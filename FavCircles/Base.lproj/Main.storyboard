@@ -28,8 +28,8 @@
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4ry-3r-VEM">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="Zsh-6S-IFy">
-                                            <size key="itemSize" width="125" height="163"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="30" minimumInteritemSpacing="0.0" id="Zsh-6S-IFy">
+                                            <size key="itemSize" width="125" height="150"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -39,32 +39,32 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="150"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="160"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ieq-9z-SIi" userLabel="Container CellView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="125" height="150"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="125" height="160"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Coe-B4-vnx" customClass="RoundedImageView" customModule="FavCircles" customModuleProvider="target">
-                                                                    <rect key="frame" x="8" y="8" width="109" height="109"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" secondItem="Coe-B4-vnx" secondAttribute="height" multiplier="1:1" id="DWS-r5-jVX"/>
+                                                                    </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="imageBackgroundColor">
                                                                             <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="imageBorderInsets">
-                                                                            <real key="value" value="2"/>
+                                                                            <real key="value" value="10"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="imageBorderWidth">
-                                                                            <real key="value" value="1"/>
+                                                                            <real key="value" value="3"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezv-H3-GTf">
-                                                                    <rect key="frame" x="8" y="117" width="109" height="25"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="25" id="q3U-PB-gDW"/>
-                                                                    </constraints>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ezv-H3-GTf">
+                                                                    <rect key="frame" x="8" y="133" width="109" height="20"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -72,25 +72,18 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstItem="Coe-B4-vnx" firstAttribute="trailing" secondItem="Ieq-9z-SIi" secondAttribute="trailingMargin" id="8wq-cX-r9Z"/>
-                                                                <constraint firstItem="ezv-H3-GTf" firstAttribute="bottom" secondItem="Ieq-9z-SIi" secondAttribute="bottomMargin" id="BWu-aD-I5A"/>
-                                                                <constraint firstItem="ezv-H3-GTf" firstAttribute="top" secondItem="Coe-B4-vnx" secondAttribute="bottom" id="HxI-v1-2Jo"/>
-                                                                <constraint firstItem="Coe-B4-vnx" firstAttribute="leading" secondItem="Ieq-9z-SIi" secondAttribute="leadingMargin" id="TpG-9a-0Hg"/>
-                                                                <constraint firstAttribute="bottom" secondItem="Coe-B4-vnx" secondAttribute="bottom" constant="33" id="VmX-BS-2Zd"/>
-                                                                <constraint firstItem="ezv-H3-GTf" firstAttribute="leading" secondItem="Coe-B4-vnx" secondAttribute="leading" id="X4d-XT-GbN"/>
-                                                                <constraint firstItem="Coe-B4-vnx" firstAttribute="leading" secondItem="Ieq-9z-SIi" secondAttribute="leading" constant="6" id="fd9-Xq-Coh"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Coe-B4-vnx" secondAttribute="trailing" constant="8" id="feT-Eg-VB1"/>
-                                                                <constraint firstItem="Coe-B4-vnx" firstAttribute="width" secondItem="ezv-H3-GTf" secondAttribute="width" id="gYd-oB-Ju3"/>
-                                                                <constraint firstAttribute="width" secondItem="Ieq-9z-SIi" secondAttribute="height" multiplier="5:6" id="l30-4e-KIw"/>
-                                                                <constraint firstItem="Coe-B4-vnx" firstAttribute="top" secondItem="Ieq-9z-SIi" secondAttribute="topMargin" id="o4k-wq-Aan"/>
-                                                                <constraint firstItem="Coe-B4-vnx" firstAttribute="top" secondItem="Ieq-9z-SIi" secondAttribute="top" constant="8" id="x2f-H2-0Nl"/>
+                                                                <constraint firstItem="ezv-H3-GTf" firstAttribute="top" secondItem="Coe-B4-vnx" secondAttribute="bottom" constant="8" symbolic="YES" id="0Hz-6I-bZU"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Coe-B4-vnx" secondAttribute="trailing" id="2Jc-k6-hyb"/>
+                                                                <constraint firstItem="Coe-B4-vnx" firstAttribute="top" secondItem="Ieq-9z-SIi" secondAttribute="top" id="TDk-aX-ylB"/>
+                                                                <constraint firstItem="Coe-B4-vnx" firstAttribute="top" secondItem="Ieq-9z-SIi" secondAttribute="top" id="fBo-tg-Fde"/>
+                                                                <constraint firstAttribute="width" secondItem="Coe-B4-vnx" secondAttribute="width" id="gEf-Zu-B7V"/>
+                                                                <constraint firstItem="Coe-B4-vnx" firstAttribute="leading" secondItem="Ieq-9z-SIi" secondAttribute="leading" id="nKI-va-nrw"/>
+                                                                <constraint firstItem="ezv-H3-GTf" firstAttribute="leading" secondItem="Ieq-9z-SIi" secondAttribute="leadingMargin" id="pwv-GS-Acm"/>
+                                                                <constraint firstItem="ezv-H3-GTf" firstAttribute="centerX" secondItem="Coe-B4-vnx" secondAttribute="centerX" id="uig-BE-99R"/>
                                                             </constraints>
                                                             <variation key="default">
                                                                 <mask key="constraints">
-                                                                    <exclude reference="VmX-BS-2Zd"/>
-                                                                    <exclude reference="fd9-Xq-Coh"/>
-                                                                    <exclude reference="feT-Eg-VB1"/>
-                                                                    <exclude reference="x2f-H2-0Nl"/>
+                                                                    <exclude reference="fBo-tg-Fde"/>
                                                                 </mask>
                                                             </variation>
                                                         </view>
@@ -98,11 +91,12 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <constraints>
-                                                    <constraint firstItem="Ieq-9z-SIi" firstAttribute="top" secondItem="ttP-q5-4pQ" secondAttribute="top" id="AoI-4M-tC3"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Ieq-9z-SIi" secondAttribute="trailing" id="DvM-4q-ZD2"/>
-                                                    <constraint firstItem="Ieq-9z-SIi" firstAttribute="leading" secondItem="ttP-q5-4pQ" secondAttribute="leading" id="h5d-JW-JNd"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Ieq-9z-SIi" secondAttribute="bottom" id="9ul-TX-oQD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Ieq-9z-SIi" secondAttribute="trailing" id="Kb4-9o-nZ9"/>
+                                                    <constraint firstItem="Ieq-9z-SIi" firstAttribute="top" secondItem="ttP-q5-4pQ" secondAttribute="top" id="dNj-gZ-l9L"/>
+                                                    <constraint firstItem="Ieq-9z-SIi" firstAttribute="leading" secondItem="ttP-q5-4pQ" secondAttribute="leading" id="lPK-hz-IlX"/>
                                                 </constraints>
-                                                <size key="customSize" width="125" height="150"/>
+                                                <size key="customSize" width="125" height="160"/>
                                                 <connections>
                                                     <outlet property="cellImageView" destination="Coe-B4-vnx" id="ffO-fl-PJU"/>
                                                     <outlet property="cellNameLabel" destination="ezv-H3-GTf" id="n1j-dO-10O"/>

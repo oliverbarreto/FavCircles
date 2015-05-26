@@ -54,8 +54,9 @@ class RoundedImageView: UIView {
         
         if imageLayer == nil {
             let mask = CAShapeLayer()
-            let dx = imageBorderInsets + imageBorderWidth
-            let path = UIBezierPath(ovalInRect: CGRectInset(self.bounds, dx, dx))
+
+            let dx = (imageBorderInsets / 2.0) + imageBorderWidth
+            let path = UIBezierPath(ovalInRect: CGRectInset(bounds, dx, dx))
             mask.fillColor = UIColor.blackColor().CGColor
             mask.path = path.CGPath
             mask.frame = self.bounds
