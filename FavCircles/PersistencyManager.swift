@@ -137,10 +137,17 @@ class PersistencyManager: NSObject {
             UserFav(name: "Ana", lastName: "Acosta", type: "iPhone", favItem: "+34670875979", imageName: "ARAL.jpg", favGroup: "Family"),
             UserFav(name: "Ana", lastName: "Acosta", type: "Work", favItem: "+34922602083", imageName: "ARAL.jpg", favGroup: "Family"),
             UserFav(name: "Mima", lastName: "Rodríguez Pestano", type: "iPhone", favItem: "+34697414021", imageName: "Mima.jpeg", favGroup: "Family"),
-            UserFav(name: "Defaul", lastName: "Default", type: "Default", favItem: "", imageName: "default.png", favGroup: "Family"),
+            UserFav(name: "Default", lastName: "Default", type: "Default", favItem: "", imageName: "default.png", favGroup: "Family"),
             UserFav(name: "Colegio Pureza de María", lastName: "", type: "Work", favItem: "+34922277763", imageName: "purezamaria.jpeg", favGroup: "Colegio"),        
+
             UserFav(name: "Bulbasur", lastName: "", type: "Mikemons", favItem: "", imageName: "bulbasaur.jpg", favGroup: "Mikemons"),
-            UserFav(name: "Pikachu", lastName: "", type: "Mikemons", favItem: "", imageName: "025Pikachu_OS_anime_4.png", favGroup: "Mikemons")]
+            UserFav(name: "Venusaur", lastName: "", type: "Mikemons", favItem: "", imageName: "venusaur.jpg", favGroup: "Mikemons"),
+            UserFav(name: "Ivysaur", lastName: "", type: "Mikemons", favItem: "", imageName: "ivysaur.jpg", favGroup: "Mikemons"),
+            UserFav(name: "Wigglytuff", lastName: "", type: "Mikemons", favItem: "", imageName: "wigglytuff.jpg", favGroup: "Mikemons"),
+            UserFav(name: "Jigglypuff", lastName: "", type: "Mikemons", favItem: "", imageName: "jigglypuff.jpg", favGroup: "Mikemons"),
+            UserFav(name: "raichu", lastName: "", type: "Mikemons", favItem: "", imageName: "raichu.jpg", favGroup: "Mikemons"),
+
+            UserFav(name: "Pikachu", lastName: "", type: "Mikemons", favItem: "", imageName: "pikachu.png", favGroup: "Mikemons")]
         
         favs = tmpDB
         println("DATABASE - user added: " + "\(favs.description)")
