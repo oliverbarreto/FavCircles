@@ -12,13 +12,18 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
 
     
     // MARK: Outlets
-    
-    @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+
+    // To create Bluf Effect
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    
+    var blurVisualEffectView: UIVisualEffectView!
+
     
     // MARK: Model
-    var userModel: [UserFav]!
-    
+    var userModel: [UserFav]?
+    var circleName: String?
     
     // MARK: Variables
     private struct Constants {
@@ -49,10 +54,6 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         // Do any additional setup after loading the view.
         
         //Populate Model
-        userModel = LibraryAPI.sharedInstanceAPI.getAllUserFavs()
-
-        
-        println("\(userModel)")
         
         
         // Collection View First Section Top Insets with Cells
@@ -62,10 +63,20 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         // UIScrollView content offset to push down the section to view's bottom
         self.collectionView.contentInset = UIEdgeInsets(top: 360, left: 0, bottom: 0, right: 0)
         
+        
     }
     
+    override func viewWillLayoutSubviews() {
+
+        
+    }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        // Background
+        //setupBackgroundImageViewWithAutolayoutConstrains()
+        setupBackgroundImageViewWithFrame()
         
     }
 
@@ -98,23 +109,24 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return self.userModel.count
+        if self.userModel != nil {
+            return self.userModel!.count
+        } else { return 0 }
     }
+    
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
         // Configure the cell
-
-        println("IndexPath: \(indexPath.item)")
-        println("User: \(userModel[indexPath.item])")
-
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.CollectionViewCellFavCellIdentifier, forIndexPath: indexPath) as! FCRegularCellCollectionViewCell
         
         // Configure the cell
         
-        let user = userModel[indexPath.item]
-        cell.cellItem = FavCirclesCellItem(cellType: "regular", userFav: user)
-
+        if let model = self.userModel {
+            let myuser = model[indexPath.item]
+            cell.cellItem = FavCirclesCellItem(cellType: "regular", userFav: myuser)
+        }
 
         return cell
     }
@@ -146,12 +158,74 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
 
             let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: Constants.CollectionViewSectionHeaderCellIDentifier, forIndexPath: indexPath) as! FCCollectionViewReusableHeader
 
-            headerView.sectionHeaderLabel?.text = "Family"
-            return headerView
+            if let sectionName = self.circleName {
+                headerView.sectionHeaderLabel?.text = "\(sectionName)"
 
+            } else {
+                headerView.sectionHeaderLabel?.text = "Group"
+                }
+            return headerView
+            
         default:
             assert(false, "Unexpected element kind")
         }
     }
     
+    
+    
+    //MARK: Custom Methods
+    
+    func setupBackgroundImageViewWithFrame() {
+        // Set Background Image
+        self.backgroundImageView.image = UIImage(named: "background1.jpg")
+        
+        // Set blurVisualEffectView's frame
+//        if self.blurVisualEffectView == nil {
+//            self.blurVisualEffectView = UIVisualEffectView(frame: self.view.bounds)
+//        }
+        
+        // Create Blur Effect and UIVisualEffectView
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        self.blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
+        self.blurVisualEffectView.frame = self.backgroundView.bounds
+        
+        // Add subview on top of background
+        self.backgroundView.insertSubview(self.blurVisualEffectView, atIndex: 1)
+    
+    }
+    
+    
+    func setupBackgroundImageViewWithAutolayoutConstrains() {
+
+        // Set Background Image
+        self.backgroundImageView.image = UIImage(named: "background1.jpg")
+        
+        
+        // Create Blur Effect and UIVisualEffectView
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        self.blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
+        self.blurVisualEffectView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        //self.blurVisualEffectView.frame = self.containerViewForBlurEffects.bounds
+        //self.blurVisualEffectView.hidden = true
+        
+        
+        // Add subview on top of background
+        self.backgroundView.insertSubview(self.blurVisualEffectView, atIndex: 1)
+        
+        addConstrains()
+    }
+
+    func addConstrains() {
+        
+        var constrains = [NSLayoutConstraint]()
+        
+        // Blur Effects view
+        constrains.append(NSLayoutConstraint(item: self.blurVisualEffectView!, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self.backgroundView, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0))
+        constrains.append(NSLayoutConstraint(item: self.blurVisualEffectView!, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.backgroundView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 0))
+        constrains.append(NSLayoutConstraint(item: self.blurVisualEffectView!, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.backgroundView, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0))
+        constrains.append(NSLayoutConstraint(item: self.blurVisualEffectView!, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: self.backgroundView, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 0))
+        
+        self.backgroundView.addConstraints(constrains)
+    }
+
 }

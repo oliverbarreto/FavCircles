@@ -182,6 +182,7 @@ class PersistencyManager: NSObject {
     // MARK: PERsistency with File system
     
     private func loadFastFavsObjectFromFileSystem() {
+        
         // Load Archived Objects data from the file system or create dummy DB if there is no previous data
         let fileManager = NSFileManager()
         
@@ -206,6 +207,7 @@ class PersistencyManager: NSObject {
     }
 
     private func saveFastFavsObjectFromFileSystem() {
+        
         // Persist using Archiving/Unarchiving Objetcs to filesystem
         if let data = NSKeyedArchiver.archivedDataWithRootObject(favs) as NSData? {
 
