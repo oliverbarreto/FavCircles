@@ -19,6 +19,7 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     // MARK: Model
     var userModel: [UserFav]!
     
+    
     // MARK: Variables
     private struct Constants {
         

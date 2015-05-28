@@ -56,8 +56,6 @@
 		A7493D5D1B14808D007184C4 /* wigglytuff.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7493D3C1B14808D007184C4 /* wigglytuff.jpg */; };
 		A7493D5F1B1480C3007184C4 /* add_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A7493D5E1B1480C3007184C4 /* add_icon.png */; };
 		A7728FFB1B14C11400F2605F /* FCCollectionViewReusableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7728FFA1B14C11400F2605F /* FCCollectionViewReusableHeader.swift */; };
-		A78404281B172EE400F184F4 /* TESTCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78404271B172EE400F184F4 /* TESTCollectionViewController.swift */; };
-		A784042A1B172FD400F184F4 /* TESTCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78404291B172FD400F184F4 /* TESTCollectionViewCell.swift */; };
 		A7962C7C1B17172000A6A670 /* FCMainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7962C7B1B17172000A6A670 /* FCMainPageViewController.swift */; };
 		A7C0795F1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0795E1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -126,8 +124,6 @@
 		A7493D3C1B14808D007184C4 /* wigglytuff.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wigglytuff.jpg; sourceTree = "<group>"; };
 		A7493D5E1B1480C3007184C4 /* add_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_icon.png; sourceTree = "<group>"; };
 		A7728FFA1B14C11400F2605F /* FCCollectionViewReusableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCCollectionViewReusableHeader.swift; path = Classes/Views/FCCollectionViewReusableHeader.swift; sourceTree = "<group>"; };
-		A78404271B172EE400F184F4 /* TESTCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TESTCollectionViewController.swift; path = Classes/Controllers/TESTCollectionViewController.swift; sourceTree = "<group>"; };
-		A78404291B172FD400F184F4 /* TESTCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TESTCollectionViewCell.swift; path = Classes/Controllers/TESTCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7962C7B1B17172000A6A670 /* FCMainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCMainPageViewController.swift; path = Classes/Controllers/FCMainPageViewController.swift; sourceTree = "<group>"; };
 		A7C0795E1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCRegularCellCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,11 +229,9 @@
 		A71A6C6B1B136026006CB113 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A78404291B172FD400F184F4 /* TESTCollectionViewCell.swift */,
-				A78404271B172EE400F184F4 /* TESTCollectionViewController.swift */,
+				A7962C7B1B17172000A6A670 /* FCMainPageViewController.swift */,
 				A71A6C771B136D5D006CB113 /* FCGenericPageContentViewController.swift */,
 				A71A6C7B1B136F6F006CB113 /* FCPageContentVC.swift */,
-				A7962C7B1B17172000A6A670 /* FCMainPageViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -498,14 +492,12 @@
 				A71A6C701B136CA4006CB113 /* PersistencyManager.swift in Sources */,
 				A71A6C721B136CBD006CB113 /* User.swift in Sources */,
 				A71A6C3F1B133BEE006CB113 /* AppDelegate.swift in Sources */,
-				A78404281B172EE400F184F4 /* TESTCollectionViewController.swift in Sources */,
 				A71A6C741B136CCF006CB113 /* FavCirclesCellItem.swift in Sources */,
 				A7728FFB1B14C11400F2605F /* FCCollectionViewReusableHeader.swift in Sources */,
 				A71A6C6D1B136C87006CB113 /* LibraryAPI.swift in Sources */,
 				A7962C7C1B17172000A6A670 /* FCMainPageViewController.swift in Sources */,
 				A71A6C421B133BEE006CB113 /* FavCircles.xcdatamodeld in Sources */,
 				A71A6C7C1B136F6F006CB113 /* FCPageContentVC.swift in Sources */,
-				A784042A1B172FD400F184F4 /* TESTCollectionViewCell.swift in Sources */,
 				A71A6C7A1B136EFA006CB113 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
