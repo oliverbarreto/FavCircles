@@ -12,7 +12,7 @@ class PersistencyManager: NSObject {
     
     // MARK: Class Constants
     private struct Constants {
-        static let MaxNumberOfUserFavs: Int = 30
+        static let MaxNumberOfUserFavs: Int = 20
 
         static let persistencyOptions = FastFavsPersistencyOptions.FileSystem
 

@@ -30,7 +30,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="30" minimumInteritemSpacing="0.0" id="Zsh-6S-IFy">
                                             <size key="itemSize" width="125" height="150"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="headerReferenceSize" width="50" height="111"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
@@ -103,6 +103,28 @@
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
+                                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionHeaderCell" id="9OL-SH-peF" customClass="FCCollectionViewReusableHeader" customModule="FavCircles" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="111"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Family" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1h-Ed-Svc">
+                                                    <rect key="frame" x="28" y="23" width="545" height="65"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="l1h-Ed-Svc" secondAttribute="bottom" constant="23" id="8FK-xo-AA6"/>
+                                                <constraint firstAttribute="trailing" secondItem="l1h-Ed-Svc" secondAttribute="trailing" constant="27" id="Zav-F2-x2P"/>
+                                                <constraint firstItem="l1h-Ed-Svc" firstAttribute="leading" secondItem="9OL-SH-peF" secondAttribute="leading" constant="28" id="djW-1V-BlX"/>
+                                                <constraint firstItem="l1h-Ed-Svc" firstAttribute="top" secondItem="9OL-SH-peF" secondAttribute="topMargin" constant="15" id="ngX-fL-tys"/>
+                                            </constraints>
+                                            <connections>
+                                                <outlet property="sectionHeaderLabel" destination="l1h-Ed-Svc" id="DEE-1c-DB8"/>
+                                            </connections>
+                                        </collectionReusableView>
                                         <connections>
                                             <outlet property="dataSource" destination="H5V-ah-Dc1" id="I8f-JA-NwX"/>
                                             <outlet property="delegate" destination="H5V-ah-Dc1" id="TSG-b4-OuF"/>
@@ -130,6 +152,10 @@
                             <constraint firstItem="CIa-3n-set" firstAttribute="top" secondItem="9Hm-jA-sYI" secondAttribute="top" id="MhG-YQ-6ab"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backgroundView" destination="PDv-Wx-nIU" id="J7v-br-IBb"/>
+                        <outlet property="collectionView" destination="4ry-3r-VEM" id="eF6-ea-Tzl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QbN-Mm-qi9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
