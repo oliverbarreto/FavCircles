@@ -1,36 +1,35 @@
 //
-//  FavCirclesRegularCellCollectionViewCell.swift
+//  TESTCollectionViewCell.swift
 //  FavCircles
 //
-//  Created by David Oliver Barreto Rodríguez on 25/5/15.
+//  Created by David Oliver Barreto Rodríguez on 28/5/15.
 //  Copyright (c) 2015 David Oliver Barreto Rodríguez. All rights reserved.
 //
 
 import UIKit
 
-class FCRegularCellCollectionViewCell: UICollectionViewCell {
-
-    // MARK: Outlets
-    @IBOutlet weak var cellImageView: RoundedImageView!
-    @IBOutlet weak var cellNameLabel: UILabel!
+class TESTCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var image: UIImageView!
     
     // MARK: Model
     var cellItem: FavCirclesCellItem? {
         didSet {
             updateUI()
-        
+            
         }
     }
     
     func updateUI() {
         
         // Reset any existing info
-        self.cellImageView.profileImage = nil
-        self.cellNameLabel.text = nil
+        self.image.image = nil
+        self.label.text = nil
         
         if let cellitem = self.cellItem {
             println("Current CellItem: \(cellitem)")
-
+            
             if let user = cellitem.userFav {
                 println("Current User: \(user)")
                 
@@ -39,11 +38,12 @@ class FCRegularCellCollectionViewCell: UICollectionViewCell {
                 
                 println("Current Cell UserName: \(myName)")
                 println("Current Cell: \(user.imageName)")
-
                 
-                self.cellNameLabel.text = myName
-                self.cellImageView.profileImage = myImage
+                
+                self.label.text = myName
+                self.image.image = myImage
             }
         }
     }
+    
 }
