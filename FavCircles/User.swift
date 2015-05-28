@@ -66,7 +66,7 @@ class UserFav: NSObject, NSCoding, Printable, Equatable {
         static let UserFavKeyForName: String = "name"
         static let UserFavKeyForLastName: String = "LastName"
         static let UserFavKeyForType: String = "type"
-        static let UserFavKeyForFavItem: String = "favitem"
+        static let UserFavKeyForFavItem: String = "favItem"
         static let UserFavKeyForImageName: String = "imageName"
         static let UserFavKeyForFavGroup: String = "favGroup"
     }

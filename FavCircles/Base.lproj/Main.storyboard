@@ -6,10 +6,36 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--MainPageController-->
+        <scene sceneID="tBt-mO-WNm">
+            <objects>
+                <viewController title="MainPageController" id="1cx-ZW-gHk" customClass="FCMainPageViewController" customModule="FavCircles" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0zr-9R-0nD"/>
+                        <viewControllerLayoutGuide type="bottom" id="kZR-8G-tXK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wRe-Z8-aFc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i8Z-JA-e5K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7380" y="-21132"/>
+        </scene>
+        <!--Container Page View Controller-->
+        <scene sceneID="Boe-VD-tul">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" title="Container Page View Controller" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="TTO-J8-iFk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PkC-Fx-dkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6712" y="-21394"/>
+        </scene>
         <!--Page Content View Controller-->
         <scene sceneID="3Rx-Vg-y80">
             <objects>
-                <viewController id="H5V-ah-Dc1" userLabel="Page Content View Controller" customClass="FCPageContentVC" customModule="FavCircles" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Page Content View Controller" id="H5V-ah-Dc1" userLabel="Page Content View Controller" customClass="FCPageContentVC" customModule="FavCircles" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="a0B-si-Cva"/>
                         <viewControllerLayoutGuide type="bottom" id="GfJ-CK-D8G"/>
@@ -159,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QbN-Mm-qi9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2612" y="-13223"/>
+            <point key="canvasLocation" x="-6712" y="-20698"/>
         </scene>
     </scenes>
 </document>

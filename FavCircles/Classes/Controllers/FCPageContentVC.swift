@@ -17,11 +17,12 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: Model
-    private var userFavContactsArray = [UserFav]()
-
+    var userModel: [UserFav]!
+    
     
     // MARK: Variables
     private struct Constants {
+        
         // Cell Identifiers
         static let CollectionViewCellFavCellIdentifier: String = "FavCell"
         static let CollectionViewCellFullRowSizeCellIdentifier: String = "FullRowSizeCell"
@@ -31,8 +32,8 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         static let CollectionViewCellFavTypeClear: String = "ClearCell"
         static let CollectionViewCellFavTypeFullRowSize: String = "FullRowSizeCell"
     
-        // SectionHeader Cell Types
-        static let CollectionViewSectionHeaderCell: String = "SectionHeaderCell"
+        // SectionHeader Cell IDTypes
+        static let CollectionViewSectionHeaderCellIDentifier: String = "SectionHeaderCell"
     
         // Config
         static let ConfigCellHightMultiplier: CGFloat = 1.3
@@ -46,15 +47,26 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        userFavContactsArray = LibraryAPI.sharedInstanceAPI.getAllUserFavs()
         
-        println("\(userFavContactsArray)")
+        //Populate Model
+        userModel = LibraryAPI.sharedInstanceAPI.getAllUserFavs()
+
+        
+        println("\(userModel)")
         
         
-        // First Section Top Insets
+        // Collection View First Section Top Insets with Cells
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets(top: 25, left: 0, bottom: 40, right: 0)
+
+        // UIScrollView content offset to push down the section to view's bottom
         self.collectionView.contentInset = UIEdgeInsets(top: 360, left: 0, bottom: 0, right: 0)
+        
+    }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,30 +98,25 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return userFavContactsArray.count
+        return self.userModel.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
         // Configure the cell
+
+        println("IndexPath: \(indexPath.item)")
+        println("User: \(userModel[indexPath.item])")
+
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.CollectionViewCellFavCellIdentifier, forIndexPath: indexPath) as! FCRegularCellCollectionViewCell
         
-
-        println("Current User: \(userFavContactsArray[indexPath.item])")
-
-        // TODO: Create FavCircle Cell in IB
-        if let name = userFavContactsArray[indexPath.item].name {
-            cell.cellNameLabel.text = name
-        }
-        if let image = UIImage(named: userFavContactsArray[indexPath.item].imageName) {
-            cell.cellImageView.image = image
-        }
+        // Configure the cell
         
-        println("\(cell.frame)")
-        println("\(cell.cellImageView.frame)")
-        
+        let user = userModel[indexPath.item]
+        cell.cellItem = FavCirclesCellItem(cellType: "regular", userFav: user)
+
+
         return cell
-        
     }
     
     
@@ -137,7 +144,7 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
 
         case UICollectionElementKindSectionHeader:
 
-            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: Constants.CollectionViewSectionHeaderCell, forIndexPath: indexPath) as! FCCollectionViewReusableHeader
+            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: Constants.CollectionViewSectionHeaderCellIDentifier, forIndexPath: indexPath) as! FCCollectionViewReusableHeader
 
             headerView.sectionHeaderLabel?.text = "Family"
             return headerView
@@ -147,31 +154,4 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         }
     }
     
-    /*
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        
-        let reusableview: UICollectionReusableView? = nil
-        
-        /*
-        if (kind == UICollectionElementKindSectionHeader) {
-        RecipeCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-        NSString *title = [[NSString alloc]initWithFormat:@"Recipe Group #%i", indexPath.section + 1];
-        headerView.title.text = title;
-        UIImage *headerImage = [UIImage imageNamed:@"header_banner.png"];
-        headerView.backgroundImage.image = headerImage;
-        
-        reusableview = headerView;
-        }
-        
-        if (kind == UICollectionElementKindSectionFooter) {
-        UICollectionReusableView *footerview = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"FooterView" forIndexPath:indexPath];
-        
-        reusableview = footerview;
-        }
-        
-        return reusableview;ectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        */
-        
-    }
-*/
 }

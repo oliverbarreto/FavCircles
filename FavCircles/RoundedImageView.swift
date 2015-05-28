@@ -11,12 +11,20 @@ import UIKit
 @IBDesignable
 class RoundedImageView: UIView {
 
-    // MARK: View Variables & IBDesignable VArs
+    // MARK: View Variables & IBDesignable Vars
     var backgroundLayer: CAShapeLayer!
     var imageLayer: CALayer!
     
-    @IBInspectable var image: UIImage?
-    @IBInspectable var imageBackgroundColor:UIColor = UIColor.whiteColor()
+    @IBInspectable var profileImage: UIImage? {
+        willSet {
+            if let image = newValue {
+                self.imageLayer?.contents = image.CGImage
+            }
+        
+        }
+    }
+    
+    @IBInspectable var imageBackgroundColor: UIColor = UIColor.whiteColor()
     @IBInspectable var imageBorderInsets: CGFloat = 2.0 // Even numbers
     @IBInspectable var imageBorderWidth: CGFloat = 1.0
     
@@ -73,7 +81,7 @@ class RoundedImageView: UIView {
     
     func setupImage() {
         if imageLayer != nil {
-            if let pic = image {
+            if let pic = self.profileImage {
                 imageLayer.contents = pic.CGImage
             } else {
                 imageLayer.contents = UIImage(named: "default_profile_photo.png")?.CGImage

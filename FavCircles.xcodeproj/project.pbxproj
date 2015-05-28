@@ -56,6 +56,7 @@
 		A7493D5D1B14808D007184C4 /* wigglytuff.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7493D3C1B14808D007184C4 /* wigglytuff.jpg */; };
 		A7493D5F1B1480C3007184C4 /* add_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A7493D5E1B1480C3007184C4 /* add_icon.png */; };
 		A7728FFB1B14C11400F2605F /* FCCollectionViewReusableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7728FFA1B14C11400F2605F /* FCCollectionViewReusableHeader.swift */; };
+		A7962C7C1B17172000A6A670 /* FCMainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7962C7B1B17172000A6A670 /* FCMainPageViewController.swift */; };
 		A7C0795F1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0795E1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,7 @@
 		A7493D3C1B14808D007184C4 /* wigglytuff.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wigglytuff.jpg; sourceTree = "<group>"; };
 		A7493D5E1B1480C3007184C4 /* add_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_icon.png; sourceTree = "<group>"; };
 		A7728FFA1B14C11400F2605F /* FCCollectionViewReusableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCCollectionViewReusableHeader.swift; path = Classes/Views/FCCollectionViewReusableHeader.swift; sourceTree = "<group>"; };
+		A7962C7B1B17172000A6A670 /* FCMainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCMainPageViewController.swift; path = Classes/Controllers/FCMainPageViewController.swift; sourceTree = "<group>"; };
 		A7C0795E1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCRegularCellCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,9 +218,9 @@
 		A71A6C6A1B13601F006CB113 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A7728FFA1B14C11400F2605F /* FCCollectionViewReusableHeader.swift */,
 				A71A6C4A1B133BEE006CB113 /* LaunchScreen.xib */,
 				A71A6C751B136CD9006CB113 /* RoundedImageView.swift */,
+				A7728FFA1B14C11400F2605F /* FCCollectionViewReusableHeader.swift */,
 				A7C0795E1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift */,
 			);
 			name = View;
@@ -227,6 +229,7 @@
 		A71A6C6B1B136026006CB113 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A7962C7B1B17172000A6A670 /* FCMainPageViewController.swift */,
 				A71A6C771B136D5D006CB113 /* FCGenericPageContentViewController.swift */,
 				A71A6C7B1B136F6F006CB113 /* FCPageContentVC.swift */,
 			);
@@ -397,6 +400,7 @@
 				TargetAttributes = {
 					A71A6C381B133BEE006CB113 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 32ZDG5YTYG;
 					};
 					A71A6C501B133BEF006CB113 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -491,6 +495,7 @@
 				A71A6C741B136CCF006CB113 /* FavCirclesCellItem.swift in Sources */,
 				A7728FFB1B14C11400F2605F /* FCCollectionViewReusableHeader.swift in Sources */,
 				A71A6C6D1B136C87006CB113 /* LibraryAPI.swift in Sources */,
+				A7962C7C1B17172000A6A670 /* FCMainPageViewController.swift in Sources */,
 				A71A6C421B133BEE006CB113 /* FavCircles.xcdatamodeld in Sources */,
 				A71A6C7C1B136F6F006CB113 /* FCPageContentVC.swift in Sources */,
 				A71A6C7A1B136EFA006CB113 /* Constants.swift in Sources */,
@@ -622,9 +627,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FavCircles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -632,9 +640,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FavCircles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
