@@ -15,11 +15,22 @@ Branch:
 develop
 * feature/FullRowSizeCell
 
+- Add Top Navigation bar like with blur effect
 
-- Create Cells Clear and FullRowSiw in Storyboard
-- Create Cells IDs in Storyboard
-- Create Cells in collectionview... CellForIndexPatch
-- Create View Controller logic to manage cells...
+- Add add UserFav icon... by selectin from Contact Picker Controller!!!
+- Add remove UserFavs when Edit
+- Add Ordering of favs when long tap
+
+- Add Side Bar to add/remove circles
+
+
+- Manage Taps with Actions for FavUser Number/eMail/Account:
+edit contact
+make calls
+make facetime calls
+send text
+send whatsapp
+send tweet
 
 
 */
