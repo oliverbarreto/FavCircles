@@ -194,6 +194,7 @@
                         <outlet property="backgroundImageView" destination="Cnd-kE-zuq" id="8Az-2d-4ou"/>
                         <outlet property="backgroundView" destination="PDv-Wx-nIU" id="J7v-br-IBb"/>
                         <outlet property="collectionView" destination="4ry-3r-VEM" id="eF6-ea-Tzl"/>
+                        <outlet property="containerView" destination="CIa-3n-set" id="0ax-Er-IlI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QbN-Mm-qi9" userLabel="First Responder" sceneMemberID="firstResponder"/>
