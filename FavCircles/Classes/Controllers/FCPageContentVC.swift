@@ -26,11 +26,14 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         static let CollectionViewSectionHeaderCellIDentifier: String = "SectionHeaderCell"
         
         // Config
-        static let ConfigCellHightMultiplier: CGFloat = 1.3
         static let ConfigMaxNumberOfUserFavsPerRow: CGFloat = 4 // TODO: Make Configurable by user Prefs
         static let ConfigMaxNumberOfUserFavs: Int = 15 // TODO: Create a variable to make InApp Purchases for more contacts to add
+
         static let ImageNameForAddItemIcon:String = "add_icon.png"
         static let DefaultProfileImage:String = "default_profile_photo.png"
+
+        static let ConfigCellHightMultiplier: CGFloat = 1.3
+
     }
     
 
@@ -105,9 +108,10 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         // Setup Gesture Recognizers
         setupGestureRecognizers()
         
+        
         // Collection View First Section Top Insets with Cells
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.sectionInset = UIEdgeInsets(top: 25, left: 0, bottom: 40, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 40, right: 0)
 
         // UIScrollView content offset to push down the section to view's bottom
         self.collectionView.contentInset = UIEdgeInsets(top: 360, left: 0, bottom: 0, right: 0)
@@ -350,6 +354,7 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
             }
         }
     }
+    
     
     /*
     // MARK: Manage Positioning and CRUD of Extra Cells
