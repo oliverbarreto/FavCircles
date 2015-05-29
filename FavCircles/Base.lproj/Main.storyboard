@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1cx-ZW-gHk">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -157,16 +158,125 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="326" height="150"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Elk-3C-8eL">
-                                                            <rect key="frame" x="30" y="38" width="46" height="30"/>
-                                                            <state key="normal" title="Button">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Elk-3C-8eL">
+                                                            <rect key="frame" x="28" y="47" width="48" height="42"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="48" id="hm6-0H-dFg"/>
+                                                            </constraints>
+                                                            <state key="normal" image="Phone">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                         </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-hU-nDR">
+                                                            <rect key="frame" x="251" y="47" width="48" height="42"/>
+                                                            <state key="normal" image="Whatsapp">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjx-Rn-cgJ">
+                                                            <rect key="frame" x="105" y="47" width="48" height="42"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="48" id="21B-qE-mQf"/>
+                                                            </constraints>
+                                                            <state key="normal" image="FaceTime">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zX-az-kAI">
+                                                            <rect key="frame" x="180" y="47" width="48" height="42"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="48" id="JL7-qQ-HGl"/>
+                                                            </constraints>
+                                                            <state key="normal" image="Text">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7E-YS-IEJ">
+                                                            <rect key="frame" x="28" y="99" width="42" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="42" id="3zg-dH-IBZ"/>
+                                                                <constraint firstAttribute="height" constant="21" id="WvR-jZ-KqN"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="3zg-dH-IBZ"/>
+                                                                </mask>
+                                                            </variation>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FaceTime" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bee-pk-em4">
+                                                            <rect key="frame" x="91" y="98" width="71" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="71" id="HQp-ei-9wc"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="HQp-ei-9wc"/>
+                                                                </mask>
+                                                            </variation>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whatsapp" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bT8-FR-xfW">
+                                                            <rect key="frame" x="239" y="99" width="74" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8m-L6-RHm">
+                                                            <rect key="frame" x="168" y="98" width="71" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="71" id="E8M-tw-YD6"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="E8M-tw-YD6"/>
+                                                                </mask>
+                                                            </variation>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="fjx-Rn-cgJ" firstAttribute="centerX" secondItem="bee-pk-em4" secondAttribute="centerX" constant="2.5" id="2O2-yO-kM0"/>
+                                                    <constraint firstItem="G7E-YS-IEJ" firstAttribute="leading" secondItem="Elk-3C-8eL" secondAttribute="leading" id="3Ky-2h-bjQ"/>
+                                                    <constraint firstItem="2zX-az-kAI" firstAttribute="top" secondItem="6gk-hU-nDR" secondAttribute="top" id="3lC-Pt-I1p"/>
+                                                    <constraint firstItem="2zX-az-kAI" firstAttribute="top" secondItem="fjx-Rn-cgJ" secondAttribute="top" id="5La-nI-GqQ"/>
+                                                    <constraint firstItem="fjx-Rn-cgJ" firstAttribute="bottom" secondItem="Elk-3C-8eL" secondAttribute="bottom" id="6Nx-vF-skI"/>
+                                                    <constraint firstItem="bT8-FR-xfW" firstAttribute="leading" secondItem="p8m-L6-RHm" secondAttribute="trailing" id="6gO-1H-rb4"/>
+                                                    <constraint firstItem="p8m-L6-RHm" firstAttribute="baseline" secondItem="bee-pk-em4" secondAttribute="baseline" id="9Yd-hT-DDE"/>
+                                                    <constraint firstAttribute="bottomMargin" secondItem="bee-pk-em4" secondAttribute="bottom" constant="23" id="9cO-QH-H8n"/>
+                                                    <constraint firstItem="Elk-3C-8eL" firstAttribute="leading" secondItem="6n1-JL-xx1" secondAttribute="leadingMargin" constant="20" id="Avs-bb-E1k"/>
+                                                    <constraint firstItem="G7E-YS-IEJ" firstAttribute="centerX" secondItem="Elk-3C-8eL" secondAttribute="centerX" constant="-3" id="Ctw-xa-ubW"/>
+                                                    <constraint firstItem="fjx-Rn-cgJ" firstAttribute="top" secondItem="Elk-3C-8eL" secondAttribute="top" id="EOv-Fo-gco"/>
+                                                    <constraint firstItem="bee-pk-em4" firstAttribute="top" secondItem="fjx-Rn-cgJ" secondAttribute="bottom" constant="9" id="Edj-Xz-4sM"/>
+                                                    <constraint firstItem="6gk-hU-nDR" firstAttribute="leading" secondItem="2zX-az-kAI" secondAttribute="trailing" constant="23" id="HH9-9B-2EA"/>
+                                                    <constraint firstItem="bT8-FR-xfW" firstAttribute="firstBaseline" secondItem="G7E-YS-IEJ" secondAttribute="firstBaseline" id="K0F-hg-0zZ"/>
+                                                    <constraint firstItem="p8m-L6-RHm" firstAttribute="leading" secondItem="bee-pk-em4" secondAttribute="trailing" constant="6" id="Kne-HO-UvT"/>
+                                                    <constraint firstItem="G7E-YS-IEJ" firstAttribute="top" secondItem="Elk-3C-8eL" secondAttribute="bottom" constant="10" id="Mn5-Lh-pH1"/>
+                                                    <constraint firstItem="6gk-hU-nDR" firstAttribute="centerX" secondItem="bT8-FR-xfW" secondAttribute="centerX" constant="-1" id="OR8-7m-2Ml"/>
+                                                    <constraint firstItem="2zX-az-kAI" firstAttribute="leading" secondItem="fjx-Rn-cgJ" secondAttribute="trailing" constant="27" id="Pce-IK-eAT"/>
+                                                    <constraint firstItem="bee-pk-em4" firstAttribute="firstBaseline" secondItem="p8m-L6-RHm" secondAttribute="firstBaseline" id="T0f-1q-TYL"/>
+                                                    <constraint firstItem="bT8-FR-xfW" firstAttribute="baseline" secondItem="G7E-YS-IEJ" secondAttribute="baseline" id="Txz-wk-6wv"/>
+                                                    <constraint firstItem="bee-pk-em4" firstAttribute="leading" secondItem="G7E-YS-IEJ" secondAttribute="trailing" constant="21" id="ZaO-zl-r4C"/>
+                                                    <constraint firstItem="G7E-YS-IEJ" firstAttribute="baseline" secondItem="bee-pk-em4" secondAttribute="baseline" constant="1" id="cUe-vw-5QO"/>
+                                                    <constraint firstItem="G7E-YS-IEJ" firstAttribute="leading" secondItem="Elk-3C-8eL" secondAttribute="leading" id="fn5-N6-JRz"/>
+                                                    <constraint firstItem="2zX-az-kAI" firstAttribute="bottom" secondItem="6gk-hU-nDR" secondAttribute="bottom" id="hEa-iX-Y8e"/>
+                                                    <constraint firstItem="p8m-L6-RHm" firstAttribute="centerX" secondItem="2zX-az-kAI" secondAttribute="centerX" constant="-0.5" id="l4Q-cb-Bdr"/>
+                                                    <constraint firstItem="2zX-az-kAI" firstAttribute="bottom" secondItem="fjx-Rn-cgJ" secondAttribute="bottom" id="oKj-ay-F24"/>
+                                                    <constraint firstItem="p8m-L6-RHm" firstAttribute="baseline" secondItem="bT8-FR-xfW" secondAttribute="baseline" constant="-1" id="pz3-2i-txo"/>
+                                                    <constraint firstAttribute="trailingMargin" secondItem="6gk-hU-nDR" secondAttribute="trailing" constant="19" id="qTw-bT-9Mr"/>
+                                                    <constraint firstItem="fjx-Rn-cgJ" firstAttribute="leading" secondItem="Elk-3C-8eL" secondAttribute="trailing" constant="29" id="rAS-Fd-a86"/>
+                                                    <constraint firstAttribute="trailingMargin" secondItem="bT8-FR-xfW" secondAttribute="trailing" constant="5" id="sAs-fr-leQ"/>
+                                                    <constraint firstAttribute="bottomMargin" secondItem="G7E-YS-IEJ" secondAttribute="bottom" constant="22" id="uwy-Cx-nlm"/>
+                                                </constraints>
                                                 <size key="customSize" width="326" height="150"/>
                                             </collectionViewCell>
                                         </cells>
@@ -244,4 +354,10 @@
             <point key="canvasLocation" x="-6712" y="-20698"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="FaceTime" width="43" height="31"/>
+        <image name="Phone" width="47" height="42"/>
+        <image name="Text" width="46" height="41"/>
+        <image name="Whatsapp" width="40" height="41"/>
+    </resources>
 </document>
