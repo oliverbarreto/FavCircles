@@ -16,9 +16,10 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         // Cell Identifiers
         static let CollectionViewCellFavCellIdentifier: String = "FavCell"
         static let CollectionViewCellFullRowSizeCellIdentifier: String = "FullRowSizeCell"
+        static let CollectionViewCellClearCellIdentifier: String = "ClearCell"
         
         // Cell Types to manage Regular, Clear and FullRowSize insertions when taps
-        static let CollectionViewCellFavTypeRegular: String = "RegularCell"
+        static let CollectionViewCellFavTypeRegular: String = "FavCell"
         static let CollectionViewCellFavTypeClear: String = "ClearCell"
         static let CollectionViewCellFavTypeFullRowSize: String = "FullRowSizeCell"
         
@@ -51,13 +52,9 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     
     
     // MARK: Model
-    var userModel: [UserFav]? {
-        didSet {
-            setupCellTypeModel()
-        }
-    }
-    var circleName: String?         // Stores the name of the current page Header Title with the circle name
+    var userModel: [UserFav]?       // Stores UserFavs array
     var cellTypeModel: [String]!    // Stores an array with celltypes for extr views
+    var circleName: String?         // Stores the name of the current page Header Title with the circle name
     
     // MARK: Variables
     // State  to insert NEW FULL SIZE CELL in row below, and clear cells if needed when row not filled
@@ -74,21 +71,21 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     
     var frameOfCellToAdd = CGSizeMake(0, 0)
 
-    
-    // Sets up model of Cell Types
-    func setupCellTypeModel() {
 
+    // Sets up model of Cell Types
+    func setupCellTypeModelWithCellType(cellType: String) {
+        
         if userModel != nil {
             self.cellTypeModel = []
+
             if !userModel!.isEmpty {
                 for myuser in userModel! {
-                    self.cellTypeModel.append(Constants.CollectionViewCellFavTypeRegular)
+                    self.cellTypeModel.append(cellType)
                 }
             }
         }
     }
 
-    
     // MARK: View Controller LifeCycle
     
     override func viewDidLoad() {
@@ -97,7 +94,7 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         // Do any additional setup after loading the view.
         
         // Populate Model
-        setupCellTypeModel()
+        setupCellTypeModelWithCellType(Constants.CollectionViewCellFavTypeRegular)
         
         println("\(self.userModel)")
         println("\(self.userModel!.count)")
@@ -116,12 +113,12 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         // UIScrollView content offset to push down the section to view's bottom
         self.collectionView.contentInset = UIEdgeInsets(top: 360, left: 0, bottom: 0, right: 0)
     }
-    
-    
-    override func viewWillLayoutSubviews() {
 
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        println("\(size)")
         
     }
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
@@ -169,18 +166,47 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 
-        // Configure the cell
-        
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.CollectionViewCellFavCellIdentifier, forIndexPath: indexPath) as! FCRegularCellCollectionViewCell
-        
-        // Configure the cell
-        
-        if let model = self.userModel {
-            let myuser = model[indexPath.item]
-            cell.cellItem = FavCirclesCellItem(cellType: "regular", userFav: myuser)
-        }
+        switch cellTypeModel[indexPath.item] {
+            
+          case Constants.CollectionViewCellFavTypeRegular:
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.CollectionViewCellFavCellIdentifier, forIndexPath: indexPath) as! FCRegularCellCollectionViewCell
 
-        return cell
+            // Configure the cell
+            let myuser = userModel![indexPath.item]
+            let mycelltype = cellTypeModel![indexPath.item]
+            
+            cell.cellItem = FCCirclesUserFavCellItems(cellType: mycelltype, userFav: myuser)
+
+            return cell
+
+        case Constants.CollectionViewCellFavTypeClear:
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.CollectionViewCellClearCellIdentifier, forIndexPath: indexPath) as! FCClearCellCollectionViewCell
+
+            // Configure the cell
+            //cell.backgroundColor = UIColor.clearColor()
+
+            return cell
+
+        case Constants.CollectionViewCellFavTypeFullRowSize:
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.CollectionViewCellFullRowSizeCellIdentifier, forIndexPath: indexPath) as! FCFullRowSizeCellCollectionViewCell
+            
+            // Configure the cell
+            //cell.backgroundColor = UIColor.clearColor()
+
+            return cell
+
+        default:
+
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.CollectionViewCellFavCellIdentifier, forIndexPath: indexPath) as! FCRegularCellCollectionViewCell
+            
+            // Configure the cell
+            let myuser = userModel![indexPath.item]
+            let mycelltype = cellTypeModel![indexPath.item]
+            
+            cell.cellItem = FCCirclesUserFavCellItems(cellType: mycelltype, userFav: myuser)
+
+            return cell
+        }
     }
     
     
@@ -189,17 +215,19 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        return CGSize(width: self.view.bounds.width/Constants.ConfigMaxNumberOfUserFavsPerRow, height: (self.view.frame.width/Constants.ConfigMaxNumberOfUserFavsPerRow) * Constants.ConfigCellHightMultiplier)
         
-        /*
-        else if modelArray[indexPath.item] == "CLEAR" {
-        return self.frameOfCellToAdd
+        if cellTypeModel[indexPath.item] == Constants.CollectionViewCellFavTypeFullRowSize {
+            return CGSize(width: self.view.bounds.width, height: self.frameOfCellToAdd.height)
+            
+        } else if cellTypeModel[indexPath.item] == Constants.CollectionViewCellFavTypeClear {
+            return self.frameOfCellToAdd
+            
         } else {
-        return CGSize(width: self.view.bounds.width/4, height: self.view.bounds.width/4);
+            return CGSize(width: self.view.bounds.width/Constants.ConfigMaxNumberOfUserFavsPerRow, height: (self.view.frame.width/Constants.ConfigMaxNumberOfUserFavsPerRow) * Constants.ConfigCellHightMultiplier)
         }
-        */
     }
 
+    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 
         // TODO: Launch direct actions
@@ -207,6 +235,7 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         println("Tap has been detected... launching direct actions!!!")
 
     }
+    
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
@@ -264,6 +293,7 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         addConstrains()
     }
 
+    
     func addConstrains() {
         
         var constrains = [NSLayoutConstraint]()
@@ -288,25 +318,89 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.numberOfTouchesRequired = 1
         singleTapGestureRecognizer.delaysTouchesBegan = true
-        self.view.addGestureRecognizer(singleTapGestureRecognizer)
+        self.collectionView.addGestureRecognizer(singleTapGestureRecognizer)
         
         // Setup Single Tap on UIViewController (does not interfiere with )
         let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "manageDoubleTap:")
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         doubleTapGestureRecognizer.numberOfTouchesRequired = 1
         doubleTapGestureRecognizer.delaysTouchesBegan = true
-        self.view.addGestureRecognizer(doubleTapGestureRecognizer)
+        //doubleTapGestureRecognizer.requireGestureRecognizerToFail(singleTapGestureRecognizer)
+        self.collectionView.addGestureRecognizer(doubleTapGestureRecognizer)
     }
+
     
-    // Single Tap
+    
+    //TODO: Finalize - Single Tap
     func manageSingleTap(sender: UITapGestureRecognizer) {
-        //TODO: Finalize
+        println("Manage Single Tap")
+        println("***********")
+        println("User model")
+        println("***********")
+        println("\(self.userModel!)")
+        println("Cell Type model")
+        println("***********")
+        println("\(self.cellTypeModel)")
+        
+        if (sender.state == UIGestureRecognizerState.Ended) {
+            
+            let point = sender.locationInView(self.collectionView)
+            let indexPathForGesture = self.collectionView?.indexPathForItemAtPoint(point)
+
+            if !isCustomCellViewShown {
+                
+                // Get the touch point and cell index, if any
+                if (indexPathForGesture != nil) {
+                    println("Single Tap was Recognized")
+                    self.selectedCell = indexPathForGesture!.item
+                    
+                    // Identify Index Path to inser the new Full Size Cell in the next row
+                    self.isCustomCellViewShown = true
+                    identifyCellIndexForFullSizeCell(indexPathForGesture!)
+                    
+                } else {
+                    println("Single Tap was Recognized in view Outside Cells, IS NOT A CELL")
+                }
+
+            } else {
+            
+                // Get the touch point and cell index, if any
+                if (indexPathForGesture != nil) {
+                    println("Single Tap was Recognized outside the inserted cell... collapse inserted cells")
+                    if (indexPathForGesture?.item != self.insertedViewCellIndex) {
+                    
+                        removeExtraCells()
+                        println("Hiding Full Row Cell View")
+                    }
+
+                } else {
+                    // Tap outside the collectionview
+                    println("Single Tap was Recognized outside the collectionview")
+                    
+                    removeExtraCells()
+                    println("Hiding Full Row Cell View")
+                }
+            }
+        }
+
+    }
+        
+
+    func manageDoubleTap(sender: UITapGestureRecognizer) {
+        println("Manage Double Tap")
+    }
+        
+
+    
+    
+    func manageSingleTap222(sender: UITapGestureRecognizer) {
         println("Manage Single Tap")
         
         // When extra full row cell view is shown, it captures taps outside the collection view to dismiss the extra views
-        if isCustomCellViewShown {
+
+        if (sender.state == UIGestureRecognizerState.Ended) {
             
-            if (sender.state == UIGestureRecognizerState.Ended) {
+            if isCustomCellViewShown {
                 
                 // Get the touch point and cell index, if any
                 let point = sender.locationInView(self.collectionView)
@@ -315,48 +409,60 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
                     // Tap on selected cell
                     if (indexPathForGesture.item == self.selectedCell) {
                         
-                        //removeExtraCells()
+                        removeExtraCells()
                         println("Hiding Full Row Cell View")
                     }
                 } else {
                     // Tap outside the collectionview
-                    //removeExtraCells()
+                    removeExtraCells()
                     println("Hiding Full Row Cell View")
                 }
-                
-                
             }
+        } else {
+            println("Hiding Full Row Cell View")
+
+            // TODO: Select "selected" Cell
+//            self.selectedCell = indexPath.item
+//            println("Tap has been detected... launching direct actions!!!")
+            
+            /* Do this in double Taps
+            // Identify Index Path to inser the new Full Size Cell in the next row
+            self.isCustomCellViewShown = true
+            identifyCellIndexForFullSizeCell(indexPath)
+            */
         }
         
     }
     
     
-    //Double Taps
-    func manageDoubleTap(sender: UITapGestureRecognizer) {
-        //TODO: Finalize
+    //TODO: Finalize - Double Taps
+    func manageDoubleTap222(sender: UITapGestureRecognizer) {
         println("Manage Double Tap")
         
         if (sender.state == UIGestureRecognizerState.Ended) {
             
-            // Get the touch point and cell index, if any
-            let point = sender.locationInView(self.collectionView)
-            let indexPathForGesture = self.collectionView?.indexPathForItemAtPoint(point)
-            if (indexPathForGesture != nil) {
-                println("Double Tap was Recognized")
-                
-                
-                // Identify Index Path to inser the new Full Size Cell in the next row
-                self.isCustomCellViewShown = true
-                //identifyCellIndexForFullSizeCell(indexPathForGesture!)
-                
-            } else {
-                println("Double Tap was Recognized in view Outside Cells, IS NOT A CELL")
+            if !isCustomCellViewShown {
+
+                // Get the touch point and cell index, if any
+                let point = sender.locationInView(self.collectionView)
+                let indexPathForGesture = self.collectionView?.indexPathForItemAtPoint(point)
+                if (indexPathForGesture != nil) {
+                    println("Double Tap was Recognized")
+                    
+                    
+                    // Identify Index Path to inser the new Full Size Cell in the next row
+                    self.isCustomCellViewShown = true
+                    identifyCellIndexForFullSizeCell(indexPathForGesture!)
+                    
+                } else {
+                    println("Double Tap was Recognized in view Outside Cells, IS NOT A CELL")
+                }
             }
         }
     }
     
     
-    /*
+
     // MARK: Manage Positioning and CRUD of Extra Cells
     
     // Removes Extra Cells
@@ -366,44 +472,81 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         removeExtraCellsForFullRowCellView()
         
         self.isCustomCellViewShown = false
-        
+
+        // Reset Extra Cells
         self.numberOfClearCellsToAdd = 0
         self.insertedCellsArray = []
         self.selectedCell = 0
         
-        self.collectionView?.reloadData()
+        // Sync CellTypes Array Model
+        setupCellTypeModelWithCellType(Constants.CollectionViewCellFavTypeRegular)
         
+        self.collectionView?.reloadData()
     }
     
+    
+    
+    // Rewmove new extra cells
+    
     private func removeExtraCellsForFullRowCellView() {
+    
         if self.insertedCellsArray.count > 0 {
+
             for item in reverse(self.insertedCellsArray) {
                 println("Removing item at index: \(item)")
-                println("From Current Array: \(self.modelArray)")
-                modelArray.removeAtIndex(item)
-                println("Updated Array: \(self.modelArray)")
+                println("From Current Array: \(self.userModel)")
+                userModel!.removeAtIndex(item)
+                println("Updated Array: \(self.userModel)")
+
+                println("From Current CellType Array: \(self.cellTypeModel)")
+                cellTypeModel!.removeAtIndex(item)
+                println("Updated Array: \(self.cellTypeModel)")
             }
         }
     }
     
     
-    // Add new cells
+    // TODO: Add new cells
     
-    private func addNewCellAtIndex(index: Int, ofType type: String) {
-        
-        if index == 0 {
-            let colors = ["RED", "ORANGE"]
-            let count: UInt32 = UInt32(colors.count)
-            let randomIndex = Int(arc4random_uniform(count))
-            modelArray.insert("\(colors[randomIndex])", atIndex: 0)
+    private func addNewCellAtIndex(index: Int, withUser user: UserFav, andCellType cellType:String) {
+    
+        switch (cellType) {
+
+            // TODO: Use this to add new users to the model...
+            case Constants.CollectionViewCellFavTypeRegular:
+                
+                if user.isEmpty() {
+
+                    //Create a Random Dummy User for testing
+                    let count: UInt32 = UInt32(userModel!.count)
+                    let randomIndex = Int(arc4random_uniform(count))
+                    
+                    userModel!.insert(userModel![randomIndex], atIndex: index)
+                    cellTypeModel[index] = cellType
+                    //cellTypeModel!.insert(cellType, atIndex: index)
+                    
+                } else {
+                    userModel!.insert(user, atIndex: index)
+                    cellTypeModel[index] = cellType
+                    //cellTypeModel!.insert(cellType, atIndex: index)
+                }
+
+                break;
+
+            case Constants.CollectionViewCellFavTypeClear, Constants.CollectionViewCellFavTypeFullRowSize:
             
-        } else {
-            modelArray.insert(type, atIndex: index)
+                userModel!.insert(user, atIndex: index)
+                cellTypeModel.insert(cellType, atIndex: index)
+            
+                break;
+         default:
+            break;
         }
         
         self.collectionView?.reloadData()
     }
     
+
     
     // Manages where to place the extra views
     
@@ -420,12 +563,12 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         
         println("\(itemLayoutAttributes)")
         
-        if modelArray.count > 0 {
+        if userModel!.count > 0 {
             
-            if indexPath.item != (self.modelArray.count-1) {
+            if indexPath.item != (self.userModel!.count-1) {
+                
                 // Search by going Right until we find another row with different frame.origin.y
-                for index in (indexPath.item+1)...(self.modelArray.count-1) {
-                    println("\(index)")
+                for index in (indexPath.item+1)...(self.userModel!.count-1) {
                     
                     let newIndexPath = NSIndexPath(forItem: index, inSection: indexPath.section)
                     let newItemLayoutAttributes = layout.layoutAttributesForItemAtIndexPath(newIndexPath)
@@ -439,9 +582,9 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
             }
             
             if indexPath.item != 0 {
+                
                 // Search by going Left until we find another row with different frame.origin.y
                 for index in stride(from: indexPath.item-1, through: 0, by: -1) {
-                    println("\(index)")
                     
                     let newIndexPath = NSIndexPath(forItem: index, inSection: indexPath.section)
                     let newItemLayoutAttributes = layout.layoutAttributesForItemAtIndexPath(newIndexPath)
@@ -479,21 +622,23 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         let numberOfClearCellsToSkipBeforeInsertingNewCellRow = self.rowIndexPathItemRangeRight - indexPath.item
         println("Number of Cells To Skip before creating a Row View: \(numberOfClearCellsToSkipBeforeInsertingNewCellRow)")
         
+
         if (numberOfCellsInRow == self.numberOfItemsPerRow) {
             self.insertedViewCellIndex = indexPath.item + (numberOfClearCellsToSkipBeforeInsertingNewCellRow + 1)
-            addNewCellAtIndex(self.insertedViewCellIndex, ofType: "GREEN")
-            self.insertedCellsArray.append(self.insertedViewCellIndex)
             
+            addNewCellAtIndex(self.insertedViewCellIndex, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeFullRowSize)
+            self.insertedCellsArray.append(self.insertedViewCellIndex)
+
         } else {
-            if (indexPath.item == modelArray.count-1) {
+            if (indexPath.item == userModel!.count-1) {
                 self.numberOfClearCellsToAdd = self.numberOfItemsPerRow - numberOfCellsInRow
                 println("Number of Cells To Add: \(numberOfClearCellsToAdd)")
                 
                 for i in 1...self.numberOfClearCellsToAdd {
-                    addNewCellAtIndex(indexPath.item + i, ofType: "CLEAR")
+                    addNewCellAtIndex(indexPath.item + i, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeClear)
                     self.insertedCellsArray.append(indexPath.item + i)
                 }
-                addNewCellAtIndex(self.insertedViewCellIndex + numberOfClearCellsToAdd + 1, ofType: "GREEN")
+                addNewCellAtIndex(self.insertedViewCellIndex + numberOfClearCellsToAdd + 1, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeFullRowSize)
                 self.insertedCellsArray.append(self.insertedViewCellIndex + numberOfClearCellsToAdd + 1)
                 
             } else {
@@ -501,13 +646,13 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
                 println("Number of Cells To Add: \(numberOfClearCellsToAdd)")
                 
                 for i in 1...self.numberOfClearCellsToAdd {
-                    addNewCellAtIndex(indexPath.item + i + numberOfClearCellsToSkipBeforeInsertingNewCellRow, ofType: "CLEAR")
+                    addNewCellAtIndex(indexPath.item + i + numberOfClearCellsToSkipBeforeInsertingNewCellRow, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeClear)
                     self.insertedCellsArray.append(indexPath.item + i + numberOfClearCellsToSkipBeforeInsertingNewCellRow)
                 }
                 
                 self.insertedViewCellIndex = indexPath.item + (numberOfClearCellsToSkipBeforeInsertingNewCellRow + 1 + numberOfClearCellsToAdd)
                 
-                addNewCellAtIndex(self.insertedViewCellIndex, ofType: "GREEN")
+                addNewCellAtIndex(self.insertedViewCellIndex, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeFullRowSize)
                 self.insertedCellsArray.append(self.insertedViewCellIndex)
                 
             }
@@ -515,5 +660,5 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         
         println("Inserted Cells Array: \(self.insertedCellsArray)")
     }
-    */
+    
 }

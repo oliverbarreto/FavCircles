@@ -57,6 +57,9 @@
 		A7493D5F1B1480C3007184C4 /* add_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A7493D5E1B1480C3007184C4 /* add_icon.png */; };
 		A7728FFB1B14C11400F2605F /* FCCollectionViewReusableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7728FFA1B14C11400F2605F /* FCCollectionViewReusableHeader.swift */; };
 		A7962C7C1B17172000A6A670 /* FCMainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7962C7B1B17172000A6A670 /* FCMainPageViewController.swift */; };
+		A7A974621B186B2A0071CBC0 /* FCClearCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A974611B186B2A0071CBC0 /* FCClearCellCollectionViewCell.swift */; };
+		A7A974641B186BA50071CBC0 /* FCFullRowSizeCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A974631B186BA50071CBC0 /* FCFullRowSizeCellCollectionViewCell.swift */; };
+		A7A974661B187CB20071CBC0 /* FCCirclesUserFavCellItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A974651B187CB20071CBC0 /* FCCirclesUserFavCellItems.swift */; };
 		A7C035821B178DE0005F95B9 /* TODO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C035811B178DE0005F95B9 /* TODO.swift */; };
 		A7C0795F1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C0795E1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -126,6 +129,9 @@
 		A7493D5E1B1480C3007184C4 /* add_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_icon.png; sourceTree = "<group>"; };
 		A7728FFA1B14C11400F2605F /* FCCollectionViewReusableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCCollectionViewReusableHeader.swift; path = Classes/Views/FCCollectionViewReusableHeader.swift; sourceTree = "<group>"; };
 		A7962C7B1B17172000A6A670 /* FCMainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCMainPageViewController.swift; path = Classes/Controllers/FCMainPageViewController.swift; sourceTree = "<group>"; };
+		A7A974611B186B2A0071CBC0 /* FCClearCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCClearCellCollectionViewCell.swift; path = Classes/Views/FCClearCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		A7A974631B186BA50071CBC0 /* FCFullRowSizeCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCFullRowSizeCellCollectionViewCell.swift; path = Classes/Views/FCFullRowSizeCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		A7A974651B187CB20071CBC0 /* FCCirclesUserFavCellItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCCirclesUserFavCellItems.swift; path = Classes/Model/FCCirclesUserFavCellItems.swift; sourceTree = "<group>"; };
 		A7C035811B178DE0005F95B9 /* TODO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TODO.swift; sourceTree = "<group>"; };
 		A7C0795E1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FCRegularCellCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -214,6 +220,7 @@
 				A71A6C401B133BEE006CB113 /* FavCircles.xcdatamodeld */,
 				A71A6C711B136CBD006CB113 /* User.swift */,
 				A71A6C731B136CCF006CB113 /* FavCirclesCellItem.swift */,
+				A7A974651B187CB20071CBC0 /* FCCirclesUserFavCellItems.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -225,6 +232,8 @@
 				A71A6C751B136CD9006CB113 /* RoundedImageView.swift */,
 				A7728FFA1B14C11400F2605F /* FCCollectionViewReusableHeader.swift */,
 				A7C0795E1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift */,
+				A7A974611B186B2A0071CBC0 /* FCClearCellCollectionViewCell.swift */,
+				A7A974631B186BA50071CBC0 /* FCFullRowSizeCellCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -499,7 +508,10 @@
 				A71A6C741B136CCF006CB113 /* FavCirclesCellItem.swift in Sources */,
 				A7728FFB1B14C11400F2605F /* FCCollectionViewReusableHeader.swift in Sources */,
 				A71A6C6D1B136C87006CB113 /* LibraryAPI.swift in Sources */,
+				A7A974641B186BA50071CBC0 /* FCFullRowSizeCellCollectionViewCell.swift in Sources */,
 				A7962C7C1B17172000A6A670 /* FCMainPageViewController.swift in Sources */,
+				A7A974621B186B2A0071CBC0 /* FCClearCellCollectionViewCell.swift in Sources */,
+				A7A974661B187CB20071CBC0 /* FCCirclesUserFavCellItems.swift in Sources */,
 				A71A6C421B133BEE006CB113 /* FavCircles.xcdatamodeld in Sources */,
 				A71A6C7C1B136F6F006CB113 /* FCPageContentVC.swift in Sources */,
 				A71A6C7A1B136EFA006CB113 /* Constants.swift in Sources */,

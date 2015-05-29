@@ -15,7 +15,7 @@ class FCRegularCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cellNameLabel: UILabel!
     
     // MARK: Model
-    var cellItem: FavCirclesCellItem? {
+    var cellItem: FCCirclesUserFavCellItems? {
         didSet {
             updateUI()
         

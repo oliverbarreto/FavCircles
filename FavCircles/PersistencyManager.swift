@@ -108,12 +108,10 @@ class PersistencyManager: NSObject {
         for i in 0..<numberOfFavs  {
             if let user = randomUserFav() {
                 tempFavs.append(user)
-                println("tempDB ADD: \(user)")
             }
         }
     
         favs = tempFavs
-        println("\(favs.description)")
     
     }
     
@@ -150,7 +148,6 @@ class PersistencyManager: NSObject {
             UserFav(name: "Pikachu", lastName: "", type: "Mikemons", favItem: "", imageName: "pikachu.png", favGroup: "Mikemons")]
         
         favs = tmpDB
-        println("DATABASE - user added: " + "\(favs.description)")
         
     }
     
