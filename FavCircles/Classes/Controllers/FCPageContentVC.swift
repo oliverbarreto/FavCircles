@@ -96,12 +96,6 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         // Populate Model
         setupCellTypeModelWithCellType(Constants.CollectionViewCellFavTypeRegular)
         
-        println("\(self.userModel)")
-        println("\(self.userModel!.count)")
-
-        println("\(self.cellTypeModel)")
-        println("\(self.cellTypeModel.count)")
-
         // Setup Gesture Recognizers
         setupGestureRecognizers()
         
@@ -227,14 +221,14 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         }
     }
 
-    
+    /*
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-
         // TODO: Launch direct actions
         self.selectedCell = indexPath.item
-        println("Tap has been detected... launching direct actions!!!")
-
+        println("Tap has been detected... launching direct actions for cell at \(indexPath.item)!!!")
+        
     }
+    */
     
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
@@ -264,11 +258,15 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     
     func setupBackgroundImageViewWithFrame() {
         // Set Background Image
-        self.backgroundImageView.image = UIImage(named: "background1.jpg")
+        if self.backgroundImageView.image == nil {
+            self.backgroundImageView.image = UIImage(named: "background1.jpg")
+        }
         
         // Create Blur Effect and UIVisualEffectView
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
-        self.blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
+        if self.blurVisualEffectView == nil {
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+            self.blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
+        }
         self.blurVisualEffectView.frame = self.view.frame
         
         // Add subview on top of background
@@ -313,35 +311,30 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
 
     func setupGestureRecognizers() {
 
-        // Setup Double Tap on UIViewController (does not interfiere with didSelectItemAtIndex)
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "manageSingleTap:")
-        singleTapGestureRecognizer.numberOfTapsRequired = 1
-        singleTapGestureRecognizer.numberOfTouchesRequired = 1
-        singleTapGestureRecognizer.delaysTouchesBegan = true
-        self.collectionView.addGestureRecognizer(singleTapGestureRecognizer)
-        
         // Setup Single Tap on UIViewController (does not interfiere with )
         let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "manageDoubleTap:")
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         doubleTapGestureRecognizer.numberOfTouchesRequired = 1
         doubleTapGestureRecognizer.delaysTouchesBegan = true
-        //doubleTapGestureRecognizer.requireGestureRecognizerToFail(singleTapGestureRecognizer)
-        self.collectionView.addGestureRecognizer(doubleTapGestureRecognizer)
+        //singleTapGestureRecognizer.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(doubleTapGestureRecognizer)
+
+        
+        // Setup Double Tap on UIViewController (does not interfiere with didSelectItemAtIndex)
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "manageSingleTap:")
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.numberOfTouchesRequired = 1
+        singleTapGestureRecognizer.delaysTouchesBegan = true
+        //singleTapGestureRecognizer.cancelsTouchesInView = false
+        singleTapGestureRecognizer.requireGestureRecognizerToFail(doubleTapGestureRecognizer)
+        self.view.addGestureRecognizer(singleTapGestureRecognizer)
+        
     }
 
     
     
     //TODO: Finalize - Single Tap
     func manageSingleTap(sender: UITapGestureRecognizer) {
-        println("Manage Single Tap")
-        println("***********")
-        println("User model")
-        println("***********")
-        println("\(self.userModel!)")
-        println("Cell Type model")
-        println("***********")
-        println("\(self.cellTypeModel)")
-        
         if (sender.state == UIGestureRecognizerState.Ended) {
             
             let point = sender.locationInView(self.collectionView)
