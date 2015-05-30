@@ -21,6 +21,8 @@
 		A71A6C781B136D5D006CB113 /* FCGenericPageContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C771B136D5D006CB113 /* FCGenericPageContentViewController.swift */; };
 		A71A6C7A1B136EFA006CB113 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C791B136EFA006CB113 /* Constants.swift */; };
 		A71A6C7C1B136F6F006CB113 /* FCPageContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71A6C7B1B136F6F006CB113 /* FCPageContentVC.swift */; };
+		A727D8641B1994C300BD0161 /* SidebarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A727D8631B1994C300BD0161 /* SidebarTableViewController.swift */; };
+		A727D8661B199D5D00BD0161 /* SidebarTableViewControllerCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A727D8651B199D5D00BD0161 /* SidebarTableViewControllerCellItem.swift */; };
 		A7493D3D1B14808D007184C4 /* ARAL.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7493D1C1B14808D007184C4 /* ARAL.jpg */; };
 		A7493D3E1B14808D007184C4 /* background1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7493D1D1B14808D007184C4 /* background1.jpg */; };
 		A7493D3F1B14808D007184C4 /* background2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A7493D1E1B14808D007184C4 /* background2.jpg */; };
@@ -57,6 +59,7 @@
 		A7493D5F1B1480C3007184C4 /* add_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A7493D5E1B1480C3007184C4 /* add_icon.png */; };
 		A7728FFB1B14C11400F2605F /* FCCollectionViewReusableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7728FFA1B14C11400F2605F /* FCCollectionViewReusableHeader.swift */; };
 		A7962C7C1B17172000A6A670 /* FCMainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7962C7B1B17172000A6A670 /* FCMainPageViewController.swift */; };
+		A7A14B491B19CBBF00F0DC3F /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14B481B19CBBF00F0DC3F /* Sidebar.swift */; };
 		A7A974621B186B2A0071CBC0 /* FCClearCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A974611B186B2A0071CBC0 /* FCClearCellCollectionViewCell.swift */; };
 		A7A974641B186BA50071CBC0 /* FCFullRowSizeCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A974631B186BA50071CBC0 /* FCFullRowSizeCellCollectionViewCell.swift */; };
 		A7A974661B187CB20071CBC0 /* FCCirclesUserFavCellItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A974651B187CB20071CBC0 /* FCCirclesUserFavCellItems.swift */; };
@@ -93,6 +96,8 @@
 		A71A6C771B136D5D006CB113 /* FCGenericPageContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCGenericPageContentViewController.swift; path = Classes/Controllers/FCGenericPageContentViewController.swift; sourceTree = "<group>"; };
 		A71A6C791B136EFA006CB113 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A71A6C7B1B136F6F006CB113 /* FCPageContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCPageContentVC.swift; path = Classes/Controllers/FCPageContentVC.swift; sourceTree = "<group>"; };
+		A727D8631B1994C300BD0161 /* SidebarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SidebarTableViewController.swift; path = Classes/Controllers/SidebarTableViewController.swift; sourceTree = "<group>"; };
+		A727D8651B199D5D00BD0161 /* SidebarTableViewControllerCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SidebarTableViewControllerCellItem.swift; path = Classes/Model/SidebarTableViewControllerCellItem.swift; sourceTree = "<group>"; };
 		A7493D1C1B14808D007184C4 /* ARAL.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ARAL.jpg; sourceTree = "<group>"; };
 		A7493D1D1B14808D007184C4 /* background1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background1.jpg; sourceTree = "<group>"; };
 		A7493D1E1B14808D007184C4 /* background2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background2.jpg; sourceTree = "<group>"; };
@@ -129,6 +134,7 @@
 		A7493D5E1B1480C3007184C4 /* add_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_icon.png; sourceTree = "<group>"; };
 		A7728FFA1B14C11400F2605F /* FCCollectionViewReusableHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCCollectionViewReusableHeader.swift; path = Classes/Views/FCCollectionViewReusableHeader.swift; sourceTree = "<group>"; };
 		A7962C7B1B17172000A6A670 /* FCMainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCMainPageViewController.swift; path = Classes/Controllers/FCMainPageViewController.swift; sourceTree = "<group>"; };
+		A7A14B481B19CBBF00F0DC3F /* Sidebar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sidebar.swift; path = Classes/Views/Sidebar.swift; sourceTree = "<group>"; };
 		A7A974611B186B2A0071CBC0 /* FCClearCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCClearCellCollectionViewCell.swift; path = Classes/Views/FCClearCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7A974631B186BA50071CBC0 /* FCFullRowSizeCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCFullRowSizeCellCollectionViewCell.swift; path = Classes/Views/FCFullRowSizeCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7A974651B187CB20071CBC0 /* FCCirclesUserFavCellItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FCCirclesUserFavCellItems.swift; path = Classes/Model/FCCirclesUserFavCellItems.swift; sourceTree = "<group>"; };
@@ -221,6 +227,7 @@
 				A71A6C711B136CBD006CB113 /* User.swift */,
 				A71A6C731B136CCF006CB113 /* FavCirclesCellItem.swift */,
 				A7A974651B187CB20071CBC0 /* FCCirclesUserFavCellItems.swift */,
+				A727D8651B199D5D00BD0161 /* SidebarTableViewControllerCellItem.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -234,6 +241,7 @@
 				A7C0795E1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift */,
 				A7A974611B186B2A0071CBC0 /* FCClearCellCollectionViewCell.swift */,
 				A7A974631B186BA50071CBC0 /* FCFullRowSizeCellCollectionViewCell.swift */,
+				A7A14B481B19CBBF00F0DC3F /* Sidebar.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -244,6 +252,7 @@
 				A7962C7B1B17172000A6A670 /* FCMainPageViewController.swift */,
 				A71A6C771B136D5D006CB113 /* FCGenericPageContentViewController.swift */,
 				A71A6C7B1B136F6F006CB113 /* FCPageContentVC.swift */,
+				A727D8631B1994C300BD0161 /* SidebarTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -500,6 +509,7 @@
 			files = (
 				A71A6C781B136D5D006CB113 /* FCGenericPageContentViewController.swift in Sources */,
 				A7C0795F1B13AFED00EBEEDA /* FCRegularCellCollectionViewCell.swift in Sources */,
+				A727D8661B199D5D00BD0161 /* SidebarTableViewControllerCellItem.swift in Sources */,
 				A71A6C761B136CD9006CB113 /* RoundedImageView.swift in Sources */,
 				A7C035821B178DE0005F95B9 /* TODO.swift in Sources */,
 				A71A6C701B136CA4006CB113 /* PersistencyManager.swift in Sources */,
@@ -507,11 +517,13 @@
 				A71A6C3F1B133BEE006CB113 /* AppDelegate.swift in Sources */,
 				A71A6C741B136CCF006CB113 /* FavCirclesCellItem.swift in Sources */,
 				A7728FFB1B14C11400F2605F /* FCCollectionViewReusableHeader.swift in Sources */,
+				A7A14B491B19CBBF00F0DC3F /* Sidebar.swift in Sources */,
 				A71A6C6D1B136C87006CB113 /* LibraryAPI.swift in Sources */,
 				A7A974641B186BA50071CBC0 /* FCFullRowSizeCellCollectionViewCell.swift in Sources */,
 				A7962C7C1B17172000A6A670 /* FCMainPageViewController.swift in Sources */,
 				A7A974621B186B2A0071CBC0 /* FCClearCellCollectionViewCell.swift in Sources */,
 				A7A974661B187CB20071CBC0 /* FCCirclesUserFavCellItems.swift in Sources */,
+				A727D8641B1994C300BD0161 /* SidebarTableViewController.swift in Sources */,
 				A71A6C421B133BEE006CB113 /* FavCircles.xcdatamodeld in Sources */,
 				A71A6C7C1B136F6F006CB113 /* FCPageContentVC.swift in Sources */,
 				A71A6C7A1B136EFA006CB113 /* Constants.swift in Sources */,

@@ -9,7 +9,7 @@
 import UIKit
 
 class FavCirclesCellItem: NSObject {
-    
+    /*
     // Model: Stores Model Array of a FavCirclesItem with Cell types and the UserFav Object to be displayed with the UICollectionView
     var cellType: String
     var userFav: UserFav? = nil
@@ -36,5 +36,5 @@ class FavCirclesCellItem: NSObject {
         
         return tmpDescription
     }
-   
+   */
 }

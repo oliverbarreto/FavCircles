@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataSource, UICollectionViewDelegate, SideBarDelegate {
 
     // MARK: Constants
     private struct Constants {
@@ -56,6 +56,13 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     var cellTypeModel: [String]!    // Stores an array with celltypes for extr views
     var circleName: String?         // Stores the name of the current page Header Title with the circle name
     
+    
+    
+    // Sidebar Object
+    var sidebar: SideBar!
+
+    
+    
     // MARK: Variables
     // State  to insert NEW FULL SIZE CELL in row below, and clear cells if needed when row not filled
     var isCustomCellViewShown = false
@@ -96,9 +103,14 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         // Populate Model
         setupCellTypeModelWithCellType(Constants.CollectionViewCellFavTypeRegular)
         
+        // Config Sidebar
+        self.sidebar = SideBar(sourceView: self.view, menuItems: ["Family", "Work", "School"])
+        self.sidebar.delegate = self
+        
+
         // Setup Gesture Recognizers
         setupGestureRecognizers()
-        
+               
         
         // Collection View First Section Top Insets with Cells
         let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -486,14 +498,9 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         if self.insertedCellsArray.count > 0 {
 
             for item in reverse(self.insertedCellsArray) {
-                println("Removing item at index: \(item)")
-                println("From Current Array: \(self.userModel)")
-                userModel!.removeAtIndex(item)
-                println("Updated Array: \(self.userModel)")
 
-                println("From Current CellType Array: \(self.cellTypeModel)")
+                userModel!.removeAtIndex(item)
                 cellTypeModel!.removeAtIndex(item)
-                println("Updated Array: \(self.cellTypeModel)")
             }
         }
     }
@@ -554,8 +561,6 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         let itemFrameYPosition = itemLayoutAttributes.frame.origin.y
         
         
-        println("\(itemLayoutAttributes)")
-        
         if userModel!.count > 0 {
             
             if indexPath.item != (self.userModel!.count-1) {
@@ -610,11 +615,7 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         
         //Zero Based Index
         let numberOfCellsInRow = (self.rowIndexPathItemRangeRight - self.rowIndexPathItemRangeLeft) + 1
-        println("Number of Cells in this Row: \(numberOfCellsInRow)")
-        
         let numberOfClearCellsToSkipBeforeInsertingNewCellRow = self.rowIndexPathItemRangeRight - indexPath.item
-        println("Number of Cells To Skip before creating a Row View: \(numberOfClearCellsToSkipBeforeInsertingNewCellRow)")
-        
 
         if (numberOfCellsInRow == self.numberOfItemsPerRow) {
             self.insertedViewCellIndex = indexPath.item + (numberOfClearCellsToSkipBeforeInsertingNewCellRow + 1)
@@ -636,7 +637,6 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
                 
             } else {
                 self.numberOfClearCellsToAdd = self.numberOfItemsPerRow - numberOfCellsInRow
-                println("Number of Cells To Add: \(numberOfClearCellsToAdd)")
                 
                 for i in 1...self.numberOfClearCellsToAdd {
                     addNewCellAtIndex(indexPath.item + i + numberOfClearCellsToSkipBeforeInsertingNewCellRow, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeClear)
@@ -650,8 +650,18 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
                 
             }
         }
-        
-        println("Inserted Cells Array: \(self.insertedCellsArray)")
     }
     
+    
+    
+    //MARK: SidebarDelegate Protocol
+    func sidebarDidSelectRowAtIndex(index: Int) {
+        println("\(index)")
+    }
+    
+    
+    
+    
+    
+
 }
