@@ -166,12 +166,18 @@
                                                             <state key="normal" image="Phone">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="makeCall:" destination="6n1-JL-xx1" eventType="touchUpInside" id="pmH-V4-hJO"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gk-hU-nDR">
                                                             <rect key="frame" x="251" y="47" width="48" height="42"/>
                                                             <state key="normal" image="Whatsapp">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="makeWhatsapp:" destination="6n1-JL-xx1" eventType="touchUpInside" id="96w-PH-FKA"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjx-Rn-cgJ">
                                                             <rect key="frame" x="105" y="47" width="48" height="42"/>
@@ -181,6 +187,9 @@
                                                             <state key="normal" image="FaceTime">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="makeFaceTime:" destination="6n1-JL-xx1" eventType="touchUpInside" id="JZV-mq-mP3"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2zX-az-kAI">
                                                             <rect key="frame" x="180" y="47" width="48" height="42"/>
@@ -190,6 +199,9 @@
                                                             <state key="normal" image="Text">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="makeText:" destination="6n1-JL-xx1" eventType="touchUpInside" id="obs-fo-tVG"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7E-YS-IEJ">
                                                             <rect key="frame" x="28" y="99" width="42" height="21"/>
@@ -246,7 +258,7 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="bT8-FR-xfW" firstAttribute="firstBaseline" secondItem="G7E-YS-IEJ" secondAttribute="firstBaseline" id="0lk-xA-Atl"/>
                                                     <constraint firstItem="Elk-3C-8eL" firstAttribute="leading" secondItem="G7E-YS-IEJ" secondAttribute="leading" id="1Wd-Q4-fop"/>

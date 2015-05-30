@@ -57,6 +57,7 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     var circleName: String?         // Stores the name of the current page Header Title with the circle name
     
     
+    var currentSelectedUser: UserFav? = nil
     
     // Sidebar Object
     var sidebar: SideBar!
@@ -197,6 +198,12 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Constants.CollectionViewCellFullRowSizeCellIdentifier, forIndexPath: indexPath) as! FCFullRowSizeCellCollectionViewCell
             
             // Configure the cell
+            
+            if let myuserModel = self.userModel {
+                cell.user = myuserModel[selectedCell]
+            }
+            
+            
             //cell.backgroundColor = UIColor.clearColor()
 
             return cell
@@ -351,6 +358,7 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
             
             let point = sender.locationInView(self.collectionView)
             let indexPathForGesture = self.collectionView?.indexPathForItemAtPoint(point)
+            
 
             if !isCustomCellViewShown {
                 
