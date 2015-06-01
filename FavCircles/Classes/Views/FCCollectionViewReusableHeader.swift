@@ -12,5 +12,16 @@ class FCCollectionViewReusableHeader: UICollectionReusableView {
     
     // MARK: Outlets
     @IBOutlet weak var sectionHeaderLabel: UILabel!
-    
+    @IBOutlet weak var sectionHeaderDateLabel: UILabel! {
+        willSet {
+                    let currentDate: NSDate = NSDate()
+                    
+                    let formatter = NSDateFormatter()
+                    formatter.stringFromDate(currentDate)
+                    formatter.dateStyle = NSDateFormatterStyle.FullStyle
+                    formatter.timeStyle = NSDateFormatterStyle.NoStyle
+                    
+                    newValue.text = formatter.stringFromDate(currentDate)
+        }
+    }
 }

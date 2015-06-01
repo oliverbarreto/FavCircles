@@ -12,7 +12,7 @@ class PersistencyManager: NSObject {
     
     // MARK: Class Constants
     private struct Constants {
-        static let MaxNumberOfUserFavs: Int = 20
+        static let MaxNumberOfUserFavs: Int = 10
 
         static let persistencyOptions = FastFavsPersistencyOptions.FileSystem
 
@@ -108,12 +108,10 @@ class PersistencyManager: NSObject {
         for i in 0..<numberOfFavs  {
             if let user = randomUserFav() {
                 tempFavs.append(user)
-                println("tempDB ADD: \(user)")
             }
         }
     
         favs = tempFavs
-        println("\(favs.description)")
     
     }
     
@@ -134,12 +132,18 @@ class PersistencyManager: NSObject {
         
         let tmpDB: [UserFav] = [
             UserFav(name: "Oliver", lastName: "Barreto", type: "iPhone", favItem: "+34610700505", imageName: "Oliver.jpg", favGroup: "Family"),
-            UserFav(name: "Ana", lastName: "Acosta", type: "iPhone", favItem: "+34670875979", imageName: "ARAL.jpg", favGroup: "Family"),
+            UserFav(name: "ARAL", lastName: "Acosta", type: "iPhone", favItem: "+34670875979", imageName: "ARAL.jpg", favGroup: "Family"),
             UserFav(name: "Ana", lastName: "Acosta", type: "Work", favItem: "+34922602083", imageName: "ARAL.jpg", favGroup: "Family"),
             UserFav(name: "Mima", lastName: "Rodríguez Pestano", type: "iPhone", favItem: "+34697414021", imageName: "Mima.jpeg", favGroup: "Family"),
-            UserFav(name: "Default", lastName: "Default", type: "Default", favItem: "", imageName: "default.png", favGroup: "Family"),
-            UserFav(name: "Colegio Pureza de María", lastName: "", type: "Work", favItem: "+34922277763", imageName: "purezamaria.jpeg", favGroup: "Colegio"),        
+            UserFav(name: "Colegio Pureza de María", lastName: "", type: "Work", favItem: "+34922277763", imageName: "purezamaria.jpeg", favGroup: "Colegio"),
 
+            UserFav(name: "María", lastName: "Duarte", type: "iPhone", favItem: "+34670845635", imageName: "MariaDuarte.jpg", favGroup: "Family"),
+            UserFav(name: "ARAL", lastName: "Acosta", type: "iPhone", favItem: "+34670875979", imageName: "ARAL.jpg", favGroup: "Family"),
+            UserFav(name: "Ana", lastName: "Acosta", type: "Work", favItem: "+34922602083", imageName: "ARAL.jpg", favGroup: "Family"),
+            UserFav(name: "Mima", lastName: "Rodríguez Pestano", type: "iPhone", favItem: "+34697414021", imageName: "Mima.jpeg", favGroup: "Family"),
+            UserFav(name: "Colegio Pureza de María", lastName: "", type: "Work", favItem: "+34922277763", imageName: "purezamaria.jpeg", favGroup: "Colegio")
+/*
+            UserFav(name: "Default", lastName: "Default", type: "Default", favItem: "", imageName: "default.png", favGroup: "Family"),
             UserFav(name: "Bulbasur", lastName: "", type: "Mikemons", favItem: "", imageName: "bulbasaur.jpg", favGroup: "Mikemons"),
             UserFav(name: "Venusaur", lastName: "", type: "Mikemons", favItem: "", imageName: "venusaur.jpg", favGroup: "Mikemons"),
             UserFav(name: "Ivysaur", lastName: "", type: "Mikemons", favItem: "", imageName: "ivysaur.jpg", favGroup: "Mikemons"),
@@ -147,10 +151,12 @@ class PersistencyManager: NSObject {
             UserFav(name: "Jigglypuff", lastName: "", type: "Mikemons", favItem: "", imageName: "jigglypuff.jpg", favGroup: "Mikemons"),
             UserFav(name: "raichu", lastName: "", type: "Mikemons", favItem: "", imageName: "raichu.jpg", favGroup: "Mikemons"),
 
-            UserFav(name: "Pikachu", lastName: "", type: "Mikemons", favItem: "", imageName: "pikachu.png", favGroup: "Mikemons")]
+            UserFav(name: "Pikachu", lastName: "", type: "Mikemons", favItem: "", imageName: "pikachu.png", favGroup: "Mikemons")
+
+*/
+        ]
         
         favs = tmpDB
-        println("DATABASE - user added: " + "\(favs.description)")
         
     }
     

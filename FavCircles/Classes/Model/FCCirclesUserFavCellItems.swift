@@ -1,15 +1,15 @@
 //
-//  FavCirclesCellItem.swift
+//  FCCirclesUserFavCellItems.swift
 //  FavCircles
 //
-//  Created by David Oliver Barreto Rodríguez on 24/5/15.
+//  Created by David Oliver Barreto Rodríguez on 29/5/15.
 //  Copyright (c) 2015 David Oliver Barreto Rodríguez. All rights reserved.
 //
 
 import UIKit
 
-class FavCirclesCellItem: NSObject {
-    /*
+class FCCirclesUserFavCellItems: NSObject {
+    
     // Model: Stores Model Array of a FavCirclesItem with Cell types and the UserFav Object to be displayed with the UICollectionView
     var cellType: String
     var userFav: UserFav? = nil
@@ -36,5 +36,4 @@ class FavCirclesCellItem: NSObject {
         
         return tmpDescription
     }
-   */
 }

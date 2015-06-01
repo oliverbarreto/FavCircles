@@ -15,7 +15,7 @@ class FCRegularCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cellNameLabel: UILabel!
     
     // MARK: Model
-    var cellItem: FavCirclesCellItem? {
+    var cellItem: FCCirclesUserFavCellItems? {
         didSet {
             updateUI()
         
@@ -29,17 +29,10 @@ class FCRegularCellCollectionViewCell: UICollectionViewCell {
         self.cellNameLabel.text = nil
         
         if let cellitem = self.cellItem {
-            println("Current CellItem: \(cellitem)")
-
             if let user = cellitem.userFav {
-                println("Current User: \(user)")
                 
                 let myName = user.name!
                 let myImage = UIImage(named: user.imageName!)!
-                
-                println("Current Cell UserName: \(myName)")
-                println("Current Cell: \(user.imageName)")
-
                 
                 self.cellNameLabel.text = myName
                 self.cellImageView.profileImage = myImage

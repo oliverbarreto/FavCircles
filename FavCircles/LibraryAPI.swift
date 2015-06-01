@@ -18,7 +18,6 @@ class LibraryAPI: NSObject {
     
     override init() {
         persistencyManager = PersistencyManager()
-        println("just created SharedInstanceAPI Singleton");
 
         super.init()
     }

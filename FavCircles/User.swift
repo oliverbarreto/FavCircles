@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Oliver Barreto. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
 
 func ==(aUser: UserFav, bUser: UserFav) -> Bool {
     return (aUser.name == bUser.name) && (aUser.lastName == bUser.lastName)
@@ -90,4 +91,12 @@ class UserFav: NSObject, NSCoding, Printable, Equatable {
         aCoder.encodeObject(imageName, forKey: UserFavClassNSCodingKeys.UserFavKeyForImageName)
         aCoder.encodeObject(favGroup, forKey: UserFavClassNSCodingKeys.UserFavKeyForFavGroup)
     }
+    
+    
+    func isEmpty()-> Bool {
+        let bool = (name == "" && lastName == "" && type == "" && favItem == "" && imageName == Constants.DefaultProfileImage && favGroup == "") ? true : false
+        return bool
+    }
+
+
 }

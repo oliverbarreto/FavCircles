@@ -24,6 +24,7 @@ class FCMainPageViewController: UIViewController, UIPageViewControllerDataSource
     private var currentFavCircle = 0
    
     private var circlesModel = [String: [UserFav]]()
+    
 
     // Page Navigation Controller
     var pageViewController: UIPageViewController!
@@ -41,14 +42,11 @@ class FCMainPageViewController: UIViewController, UIPageViewControllerDataSource
         //Populate Model
         if !self.circlesArray.isEmpty {
             for circle in circlesArray {
-                println("\(circle)")
 
                 let users:[UserFav] = LibraryAPI.sharedInstanceAPI.getAllUserFavs()
                 circlesModel[circle] = users
             }
         }
-        println("\(circlesModel)")
-
         
     }
     
@@ -56,6 +54,7 @@ class FCMainPageViewController: UIViewController, UIPageViewControllerDataSource
         
         // Instantiate the initial PageViewController
         resetPageViewController()
+        
         
         // Memento: Add observer for Entering Background
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"saveCurrentState", name: UIApplicationDidEnterBackgroundNotification, object: nil)
@@ -188,5 +187,6 @@ class FCMainPageViewController: UIViewController, UIPageViewControllerDataSource
         
         return self.viewControllerAtIndex(index)
     }
+    
     
 }
