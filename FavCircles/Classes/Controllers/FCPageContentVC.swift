@@ -252,6 +252,7 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
+        
         switch kind {
 
         case UICollectionElementKindSectionHeader:
