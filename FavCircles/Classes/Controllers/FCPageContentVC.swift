@@ -483,19 +483,39 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     
     private func removeExtraCells() {
         
-        removeExtraCellsForFullRowCellView()
         
-        self.isCustomCellViewShown = false
-
-        // Reset Extra Cells
-        self.numberOfClearCellsToAdd = 0
-        self.insertedCellsArray = []
-        self.selectedCell = 0
+        // Update UICollectionView Methods
+        //self.collectionView?.reloadData()
         
-        // Sync CellTypes Array Model
-        setupCellTypeModelWithCellType(Constants.CollectionViewCellFavTypeRegular)
+        self.collectionView.performBatchUpdates({ () -> Void in
+            
+            // Prepare Temp array for removing Items in UICollectionView
+            var itemPathsArray = [NSIndexPath]()
+            
+            for itemIndex in self.insertedCellsArray {
+                let itemPaths = NSIndexPath(forItem: itemIndex, inSection: 0)
+                itemPathsArray.append(itemPaths)
+            }
+            
+            // Delete the items from the data source
+            self.removeExtraCellsForFullRowCellView()
+            
+            // Now delete the items from the collection view
+            self.collectionView.deleteItemsAtIndexPaths(itemPathsArray)
+            
+        }, completion: nil)
         
-        self.collectionView?.reloadData()
+        /*
+        [self.collectionView performBatchUpdates:^{
+            NSArray* itemPaths = [self.collectionView indexPathsForSelectedItems];
+            ￼￼￼￼￼￼￼￼￼￼
+            // Delete the items from the data source.
+            [self deleteItemsFromDataSourceAtIndexPaths:itemPaths];
+            // Now delete the items from the collection view.
+            [self.collectionView deleteItemsAtIndexPaths:tempArray];
+            } completion:nil];
+        */
+        
     }
     
     
@@ -503,7 +523,10 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     // Rewmove new extra cells
     
     private func removeExtraCellsForFullRowCellView() {
-    
+                
+        // Sync Model to Reset Extra Cells after updating the model and preparing the remove in UICollectionView
+        
+        // Removes cells in model
         if self.insertedCellsArray.count > 0 {
 
             for item in reverse(self.insertedCellsArray) {
@@ -512,6 +535,17 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
                 cellTypeModel!.removeAtIndex(item)
             }
         }
+
+        // Reset state vars
+        self.isCustomCellViewShown = false
+        self.numberOfClearCellsToAdd = 0
+        self.insertedCellsArray = []
+        self.selectedCell = 0
+        
+        
+        // Sync CellTypes Array Model
+        setupCellTypeModelWithCellType(Constants.CollectionViewCellFavTypeRegular) //clears extra cell of type other than regular
+        
     }
     
     
