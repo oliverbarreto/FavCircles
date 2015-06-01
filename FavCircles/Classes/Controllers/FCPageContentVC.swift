@@ -483,7 +483,6 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     
     private func removeExtraCells() {
         
-        
         // Update UICollectionView Methods
         //self.collectionView?.reloadData()
         
@@ -504,18 +503,7 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
             self.collectionView.deleteItemsAtIndexPaths(itemPathsArray)
             
         }, completion: nil)
-        
-        /*
-        [self.collectionView performBatchUpdates:^{
-            NSArray* itemPaths = [self.collectionView indexPathsForSelectedItems];
-            ￼￼￼￼￼￼￼￼￼￼
-            // Delete the items from the data source.
-            [self deleteItemsFromDataSourceAtIndexPaths:itemPaths];
-            // Now delete the items from the collection view.
-            [self.collectionView deleteItemsAtIndexPaths:tempArray];
-            } completion:nil];
-        */
-        
+
     }
     
     
@@ -551,42 +539,68 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
     
     // TODO: Add new cells
     
-    private func addNewCellAtIndex(index: Int, withUser user: UserFav, andCellType cellType:String) {
+    private func addCells() {
     
-        switch (cellType) {
+        self.collectionView.performBatchUpdates({ () -> Void in
+            
+            // Prepare Temp array for removing Items in UICollectionView
+            var itemPathsArray = [NSIndexPath]()
+            
+            for itemIndex in self.insertedCellsArray {
+                let itemPaths = NSIndexPath(forItem: itemIndex, inSection: 0)
+                itemPathsArray.append(itemPaths)
+            }
+            
+            
+            // Syncs the model First: Inserts the items from the data source
+            // Now delete the items from the collection view
+            self.collectionView.insertItemsAtIndexPaths(itemPathsArray)
+            
+            }, completion: nil)
+    }
+    
+    
+    private func addNewCellAtIndex(index: Int, withUser user: UserFav, andCellType cellType:String) {
 
-            // TODO: Use this to add new users to the model...
+        
+
+            switch (cellType) {
+                
+                // TODO: Use this to add new users to the model...
             case Constants.CollectionViewCellFavTypeRegular:
                 
                 if user.isEmpty() {
-
+                    
                     //Create a Random Dummy User for testing
-                    let count: UInt32 = UInt32(userModel!.count)
+                    let count: UInt32 = UInt32(self.userModel!.count)
                     let randomIndex = Int(arc4random_uniform(count))
                     
-                    userModel!.insert(userModel![randomIndex], atIndex: index)
-                    cellTypeModel[index] = cellType
+                    self.userModel!.insert(self.userModel![randomIndex], atIndex: index)
+                    self.cellTypeModel[index] = cellType
                     //cellTypeModel!.insert(cellType, atIndex: index)
                     
                 } else {
-                    userModel!.insert(user, atIndex: index)
-                    cellTypeModel[index] = cellType
+                    self.userModel!.insert(user, atIndex: index)
+                    self.cellTypeModel[index] = cellType
                     //cellTypeModel!.insert(cellType, atIndex: index)
                 }
-
+                
                 break;
-
+                
             case Constants.CollectionViewCellFavTypeClear, Constants.CollectionViewCellFavTypeFullRowSize:
-            
-                userModel!.insert(user, atIndex: index)
-                cellTypeModel.insert(cellType, atIndex: index)
-            
+                
+                self.userModel!.insert(user, atIndex: index)
+                self.cellTypeModel.insert(cellType, atIndex: index)
+                
                 break;
-         default:
-            break;
-        }
+            default:
+                break;
+            }
+            
         
-        self.collectionView?.reloadData()
+        // Update UICollectionView Methods
+        //self.collectionView?.reloadData()
+        
     }
     
 
@@ -660,37 +674,108 @@ class FCPageContentVC: FCGenericPageContentViewController, UICollectionViewDataS
         let numberOfCellsInRow = (self.rowIndexPathItemRangeRight - self.rowIndexPathItemRangeLeft) + 1
         let numberOfClearCellsToSkipBeforeInsertingNewCellRow = self.rowIndexPathItemRangeRight - indexPath.item
 
+        // Selected cell in a row full of cells
         if (numberOfCellsInRow == self.numberOfItemsPerRow) {
-            self.insertedViewCellIndex = indexPath.item + (numberOfClearCellsToSkipBeforeInsertingNewCellRow + 1)
             
-            addNewCellAtIndex(self.insertedViewCellIndex, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeFullRowSize)
-            self.insertedCellsArray.append(self.insertedViewCellIndex)
+            self.collectionView.performBatchUpdates({ () -> Void in
 
-        } else {
-            if (indexPath.item == userModel!.count-1) {
-                self.numberOfClearCellsToAdd = self.numberOfItemsPerRow - numberOfCellsInRow
-                println("Number of Cells To Add: \(numberOfClearCellsToAdd)")
+                // Update the Model
+                self.insertedViewCellIndex = indexPath.item + (numberOfClearCellsToSkipBeforeInsertingNewCellRow + 1)
                 
-                for i in 1...self.numberOfClearCellsToAdd {
-                    addNewCellAtIndex(indexPath.item + i, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeClear)
-                    self.insertedCellsArray.append(indexPath.item + i)
+                // Add Cell
+                self.insertedCellsArray.append(self.insertedViewCellIndex)
+                self.addNewCellAtIndex(self.insertedViewCellIndex, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeFullRowSize)
+
+
+                // Prepare Temp array for removing Items in UICollectionView
+                var itemPathsArray = [NSIndexPath]()
+                
+                for itemIndex in self.insertedCellsArray {
+                    let itemPaths = NSIndexPath(forItem: itemIndex, inSection: 0)
+                    itemPathsArray.append(itemPaths)
                 }
-                addNewCellAtIndex(self.insertedViewCellIndex + numberOfClearCellsToAdd + 1, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeFullRowSize)
-                self.insertedCellsArray.append(self.insertedViewCellIndex + numberOfClearCellsToAdd + 1)
                 
+
+                // Insert Cells in UICollectionView
+                self.collectionView.insertItemsAtIndexPaths(itemPathsArray)
+
+                
+                
+            }, completion: nil)
+            
+
+        // Selected cell is in the middle of a row, or in a row not full of cells
+        } else {
+            
+            // Selected cell is the last in the model
+            if (indexPath.item == userModel!.count-1) {
+                
+                self.collectionView.performBatchUpdates({ () -> Void in
+                    
+                    // Update the Model
+                    self.numberOfClearCellsToAdd = self.numberOfItemsPerRow - numberOfCellsInRow
+                    
+                    // Adds clear cells before the full row
+                    for i in 1...self.numberOfClearCellsToAdd {
+                        // Add Cell
+                        self.insertedCellsArray.append(indexPath.item + i)
+                        self.addNewCellAtIndex(indexPath.item + i, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeClear)
+                    }
+                    
+                    // Add Cell
+                    self.insertedViewCellIndex = self.insertedViewCellIndex + self.numberOfClearCellsToAdd + 1
+                    
+                    self.insertedCellsArray.append(self.insertedViewCellIndex)
+                    self.addNewCellAtIndex(self.insertedViewCellIndex, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeFullRowSize)
+
+                    
+                    // Prepare Temp array for removing Items in UICollectionView
+                    var itemPathsArray = [NSIndexPath]()
+                    
+                    for itemIndex in self.insertedCellsArray {
+                        let itemPaths = NSIndexPath(forItem: itemIndex, inSection: 0)
+                        itemPathsArray.append(itemPaths)
+                    }
+                    
+                    // Insert Cells in UICollectionView
+                    self.collectionView.insertItemsAtIndexPaths(itemPathsArray)
+                    
+                }, completion: nil)
+                
+                
+                
+            // Selected cell is not the last one
             } else {
                 self.numberOfClearCellsToAdd = self.numberOfItemsPerRow - numberOfCellsInRow
                 
-                for i in 1...self.numberOfClearCellsToAdd {
-                    addNewCellAtIndex(indexPath.item + i + numberOfClearCellsToSkipBeforeInsertingNewCellRow, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeClear)
-                    self.insertedCellsArray.append(indexPath.item + i + numberOfClearCellsToSkipBeforeInsertingNewCellRow)
-                }
-                
-                self.insertedViewCellIndex = indexPath.item + (numberOfClearCellsToSkipBeforeInsertingNewCellRow + 1 + numberOfClearCellsToAdd)
-                
-                addNewCellAtIndex(self.insertedViewCellIndex, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeFullRowSize)
-                self.insertedCellsArray.append(self.insertedViewCellIndex)
-                
+                self.collectionView.performBatchUpdates({ () -> Void in
+
+                    // Update the Model
+                    for i in 1...self.numberOfClearCellsToAdd {
+                        // Add Cell
+                        self.insertedCellsArray.append(indexPath.item + i + numberOfClearCellsToSkipBeforeInsertingNewCellRow)
+                        self.addNewCellAtIndex(indexPath.item + i + numberOfClearCellsToSkipBeforeInsertingNewCellRow, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeClear)
+                    }
+                    
+                    self.insertedViewCellIndex = indexPath.item + (numberOfClearCellsToSkipBeforeInsertingNewCellRow + 1 + self.numberOfClearCellsToAdd)
+                    
+                    // Add Cell
+                    self.insertedCellsArray.append(self.insertedViewCellIndex)
+                    self.addNewCellAtIndex(self.insertedViewCellIndex, withUser: UserFav(), andCellType: Constants.CollectionViewCellFavTypeFullRowSize)
+                    
+                    
+                    // Prepare Temp array for removing Items in UICollectionView
+                    var itemPathsArray = [NSIndexPath]()
+                    
+                    for itemIndex in self.insertedCellsArray {
+                        let itemPaths = NSIndexPath(forItem: itemIndex, inSection: 0)
+                        itemPathsArray.append(itemPaths)
+                    }
+                    
+                    // Insert Cells in UICollectionView
+                    self.collectionView.insertItemsAtIndexPaths(itemPathsArray)
+                    
+                }, completion: nil)
             }
         }
     }
